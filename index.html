@@ -1045,6 +1045,107 @@
             color: #6B7280;
         }
 
+        /* Progress Indicator */
+        .progress-indicator {
+            padding: 32px 40px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .progress-bar {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            position: relative;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .progress-step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            border: 2px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #9CA3AF;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.completed .progress-step-number {
+            background: #001E79;
+            border-color: #001E79;
+            color: white;
+        }
+
+        .progress-step.active .progress-step-number {
+            background: white;
+            border-color: #001E79;
+            color: #001E79;
+            border-width: 2px;
+        }
+
+        .progress-step-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #9CA3AF;
+            line-height: 1.3;
+        }
+
+        .progress-step.active .progress-step-label {
+            color: #001E79;
+        }
+
+        .progress-step.completed .progress-step-label {
+            color: #1A1A1A;
+        }
+
+        .progress-step-description {
+            font-size: 12px;
+            color: #9CA3AF;
+            line-height: 1.3;
+        }
+
+        .progress-step.active .progress-step-description {
+            color: #6B7280;
+        }
+
+        .progress-step-connector {
+            position: absolute;
+            top: 16px;
+            left: 32px;
+            right: -50%;
+            height: 2px;
+            background: #E5E7EB;
+            z-index: 0;
+        }
+
+        .progress-step.completed .progress-step-connector {
+            background: #001E79;
+        }
+
+        .progress-step:last-child .progress-step-connector {
+            display: none;
+        }
+
         .form-content {
             padding: 40px 40px 120px 40px;
             max-width: 100%;
@@ -1674,6 +1775,32 @@
         @media (max-width: 768px) {
             .visibility-options {
                 flex-direction: column;
+            }
+
+            .progress-indicator {
+                padding: 24px 20px;
+            }
+
+            .progress-step {
+                gap: 12px;
+            }
+
+            .progress-step-number {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+
+            .progress-step-label {
+                font-size: 12px;
+            }
+
+            .progress-step-description {
+                font-size: 11px;
+            }
+
+            .progress-step-connector {
+                top: 14px;
             }
         }
     </style>
@@ -2443,6 +2570,36 @@
             <span class="breadcrumb-current">Create New Listing</span>
         </nav>
 
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-bar">
+                <div class="progress-step active" id="progressStep1">
+                    <div class="progress-step-number">1</div>
+                    <div class="progress-step-content">
+                        <div class="progress-step-label">General Information</div>
+                        <div class="progress-step-description">Basic product details</div>
+                    </div>
+                    <div class="progress-step-connector"></div>
+                </div>
+                <div class="progress-step" id="progressStep2">
+                    <div class="progress-step-number">2</div>
+                    <div class="progress-step-content">
+                        <div class="progress-step-label">Data Source & Connection</div>
+                        <div class="progress-step-description">Connect your data platform</div>
+                    </div>
+                    <div class="progress-step-connector"></div>
+                </div>
+                <div class="progress-step" id="progressStep3">
+                    <div class="progress-step-number">3</div>
+                    <div class="progress-step-content">
+                        <div class="progress-step-label">Entitlements & Access</div>
+                        <div class="progress-step-description">Set visibility and permissions</div>
+                    </div>
+                    <div class="progress-step-connector"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Form Header -->
         <div class="form-header">
             <h1>Create New Data Product Listing</h1>
@@ -2988,6 +3145,7 @@
                 document.getElementById('nextBtnIcon').className = 'ph ph-arrow-right';
 
                 currentStep = 1;
+                updateProgressIndicator(1);
             }
 
             // Scroll to top
@@ -3007,6 +3165,23 @@
         let currentStep = 1;
         let datasetCount = 1;
 
+        function updateProgressIndicator(step) {
+            // Remove active/completed from all steps
+            document.querySelectorAll('.progress-step').forEach(s => {
+                s.classList.remove('active', 'completed');
+            });
+
+            // Mark steps as completed or active
+            for (let i = 1; i <= 3; i++) {
+                const stepElement = document.getElementById('progressStep' + i);
+                if (i < step) {
+                    stepElement.classList.add('completed');
+                } else if (i === step) {
+                    stepElement.classList.add('active');
+                }
+            }
+        }
+
         function nextStep() {
             if (currentStep === 1) {
                 // Move to step 2
@@ -3015,6 +3190,7 @@
                 document.getElementById('stepIndicator').textContent = 'Step 2 of 3: Data Source & Connection';
                 document.getElementById('previousBtn').style.display = 'flex';
                 currentStep = 2;
+                updateProgressIndicator(2);
             } else if (currentStep === 2) {
                 // Move to step 3
                 document.getElementById('step2').style.display = 'none';
@@ -3026,6 +3202,7 @@
                 document.getElementById('nextBtnIcon').className = 'ph ph-check';
 
                 currentStep = 3;
+                updateProgressIndicator(3);
             } else if (currentStep === 3) {
                 // Submit for approval
                 alert('Form submitted for approval!');
@@ -3042,6 +3219,7 @@
                 document.getElementById('stepIndicator').textContent = 'Step 1 of 3: General Information';
                 document.getElementById('previousBtn').style.display = 'none';
                 currentStep = 1;
+                updateProgressIndicator(1);
             } else if (currentStep === 3) {
                 // Move back to step 2
                 document.getElementById('step3').style.display = 'none';
@@ -3053,6 +3231,7 @@
                 document.getElementById('nextBtnIcon').className = 'ph ph-arrow-right';
 
                 currentStep = 2;
+                updateProgressIndicator(2);
             }
             window.scrollTo(0, 0);
         }
