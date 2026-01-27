@@ -1,0 +1,3303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Data Marketplace - My Listings</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #F5F7FA;
+            color: #1A1A1A;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg {
+            height: 32px;
+            width: auto;
+        }
+
+        .tagline {
+            color: #6B7280;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: #4B5563;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-item.active {
+            color: #1A1A1A;
+            border-bottom-color: #2563EB;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #EFF6FF;
+            padding: 32px 40px;
+            border-bottom: 1px solid #E5E7EB;
+            margin-top: 65px;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .hero-text h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-text p {
+            color: #6B7280;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 700px;
+        }
+
+        .create-btn {
+            background: #001E79;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .create-btn:hover {
+            background: #001557;
+        }
+
+        .create-btn-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        /* Stats Cards */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .stat-label {
+            color: #6B7280;
+            font-size: 12px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 4px;
+        }
+
+        .stat-change {
+            color: #10B981;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            padding: 32px 40px;
+            min-height: 100vh;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .filter-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .filter-dropdown {
+            padding: 12px 32px 12px 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            min-width: 150px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23374151' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        .search-container {
+            margin-left: auto;
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+        }
+
+        .sort-container {
+            position: relative;
+            margin-left: 8px;
+        }
+
+        .sort-btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sort-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .sort-btn i {
+            font-size: 20px;
+            color: #374151;
+        }
+
+        .sort-dropdown {
+            position: absolute;
+            top: calc(100% + 4px);
+            right: 0;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 100;
+            display: none;
+        }
+
+        .sort-dropdown.active {
+            display: block;
+        }
+
+        .sort-option {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .sort-option:hover {
+            background: #F9FAFB;
+        }
+
+        .sort-option:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sort-option:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .sort-option i {
+            font-size: 16px;
+            color: #6B7280;
+        }
+
+        .sort-option.selected {
+            background: #EFF6FF;
+            color: #001E79;
+            font-weight: 500;
+        }
+
+        .sort-option.selected i {
+            color: #001E79;
+        }
+
+        /* Listings Header */
+        .listings-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .listings-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .listings-count {
+            background: #F3F4F6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .product-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #FEF3C7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #92400E;
+        }
+
+        .product-icon.blue {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .product-icon.green {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .product-icon i {
+            font-size: 24px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .product-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-owner {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .status-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .status-badge.published {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .star {
+            color: #FBBF24;
+        }
+
+        .rating-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .product-dept {
+            font-size: 12px;
+            color: #6B7280;
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: #4B5563;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #F3F4F6;
+        }
+
+        .active-users {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .alert {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .alert-icon {
+            color: #EF4444;
+        }
+
+        /* Detail View Styles */
+        .detail-view {
+            display: none;
+            background: white;
+            margin-top: 65px;
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .breadcrumb {
+            padding: 20px 40px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #2563EB;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            color: #9CA3AF;
+        }
+
+        .breadcrumb-current {
+            color: #6B7280;
+        }
+
+        .detail-header {
+            padding: 32px 40px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .detail-title-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .detail-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .detail-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background: #FEF3C7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #92400E;
+            flex-shrink: 0;
+        }
+
+        .detail-icon i {
+            font-size: 36px;
+        }
+
+        .detail-title-info {
+            flex: 1;
+        }
+
+        .detail-title-info h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .detail-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-rating .star {
+            color: #FBBF24;
+            font-size: 18px;
+        }
+
+        .detail-rating-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .detail-rating-count {
+            color: #6B7280;
+            font-size: 14px;
+        }
+
+        .detail-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .detail-badge.published {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .detail-description {
+            font-size: 14px;
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .detail-kpis {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .detail-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .detail-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+        }
+
+        .access-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .access-label {
+            font-size: 12px;
+            color: #6B7280;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .access-avatars {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: 1px solid #D1D5DB;
+            background: white;
+            color: #374151;
+        }
+
+        .action-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .action-btn i {
+            font-size: 16px;
+        }
+
+        .action-btn.primary {
+            background: #001E79;
+            color: white;
+            border-color: #001E79;
+        }
+
+        .action-btn.primary:hover {
+            background: #001557;
+        }
+
+        .detail-kpi-card {
+            background: #F9FAFB;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .detail-kpi-label {
+            font-size: 12px;
+            color: #6B7280;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        .detail-content {
+            padding: 32px 40px;
+        }
+
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
+        .detail-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-section-title i {
+            color: #6B7280;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: #1A1A1A;
+            font-weight: 500;
+        }
+
+        .users-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .user-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .user-avatar-large {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .user-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .avatar-stack {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-stack-item {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .avatar-stack-item:first-child {
+            margin-left: 0;
+        }
+
+        .avatar-more {
+            background: #9CA3AF;
+        }
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .governance-card {
+            background: #F9FAFB;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .governance-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .governance-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .governance-card li {
+            font-size: 13px;
+            color: #4B5563;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .governance-card li i {
+            color: #10B981;
+            font-size: 16px;
+        }
+
+        .dataset-sample {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dataset-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .dataset-table th {
+            background: #1F2937;
+            color: white;
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dataset-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 13px;
+            color: #4B5563;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .dataset-table tr:hover {
+            background: white;
+        }
+
+        .value-prop {
+            background: #EFF6FF;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #BFDBFE;
+        }
+
+        .value-prop p {
+            font-size: 14px;
+            color: #1E40AF;
+            line-height: 1.6;
+        }
+
+        .comments-section {
+            background: #F9FAFB;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .comment {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .comment:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .comment-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .comment-date {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        .comment-text {
+            font-size: 13px;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        .back-btn {
+            background: white;
+            border: 1px solid #D1D5DB;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+        }
+
+        .back-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        /* Create Form Styles */
+        .create-form-view {
+            display: none;
+            background: #F9F9F9;
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            z-index: 1000;
+            padding-top: 65px;
+        }
+
+        .create-form-view.active {
+            display: block;
+        }
+
+        .form-header {
+            padding: 32px 40px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .form-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .form-content {
+            padding: 40px 40px 120px 40px;
+            max-width: 100%;
+        }
+
+        .form-step {
+            width: 100%;
+        }
+
+        .form-section {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin-bottom: 24px;
+        }
+
+        .form-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section-title i {
+            color: #6B7280;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1400px;
+        }
+
+        @media (max-width: 1024px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-content {
+                padding: 24px 24px 120px 24px;
+            }
+
+            .form-actions {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .form-content {
+                padding: 16px 16px 120px 16px;
+            }
+
+            .form-header {
+                padding: 24px 16px;
+            }
+
+            .form-actions {
+                padding: 16px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .form-actions-left,
+            .form-actions-right {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-label .required {
+            color: #EF4444;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1A1A1A;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #001E79;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-textarea.large {
+            min-height: 150px;
+        }
+
+        .form-helper {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 40px;
+            border-top: 1px solid #E5E7EB;
+            background: white;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .form-actions-left {
+            display: flex;
+            gap: 12px;
+        }
+
+        .form-actions-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background: #F9FAFB;
+        }
+
+        .btn-primary {
+            background: #001E79;
+            color: white;
+            border: 1px solid #001E79;
+        }
+
+        .btn-primary:hover {
+            background: #001557;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #374151;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-outline:hover {
+            background: #F9FAFB;
+        }
+
+        /* Dataset List Styles */
+        .dataset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .dataset-item {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .dataset-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dataset-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .remove-dataset-btn {
+            padding: 8px 16px;
+            border: 1px solid #EF4444;
+            background: white;
+            color: #EF4444;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .remove-dataset-btn:hover {
+            background: #FEE2E2;
+        }
+
+        .add-dataset-btn {
+            padding: 12px 24px;
+            border: 2px dashed #D1D5DB;
+            background: white;
+            color: #374151;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .add-dataset-btn:hover {
+            border-color: #001E79;
+            color: #001E79;
+            background: #F0F4FF;
+        }
+
+        .connection-test-btn {
+            padding: 10px 20px;
+            border: 1px solid #D1D5DB;
+            background: white;
+            color: #374151;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            margin-top: 16px;
+        }
+
+        .connection-test-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .connection-status.success {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .connection-status.error {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        /* Platform Selection Cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .platform-card {
+            padding: 24px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .platform-card:hover {
+            border-color: #001E79;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 30, 121, 0.1);
+        }
+
+        .platform-card.selected {
+            border-color: #001E79;
+            background: #F0F4FF;
+        }
+
+        .platform-card input[type="radio"] {
+            display: none;
+        }
+
+        .platform-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: #EFF6FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #001E79;
+            font-size: 32px;
+        }
+
+        .platform-card.selected .platform-card-icon {
+            background: #001E79;
+            color: white;
+        }
+
+        .platform-card-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .connection-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .connection-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .connection-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #EFF6FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #001E79;
+        }
+
+        .connection-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        @media (max-width: 1024px) {
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Entitlement Styles */
+        .visibility-options {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .visibility-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .visibility-option:hover {
+            border-color: #001E79;
+        }
+
+        .visibility-option.selected {
+            border-color: #001E79;
+            background: #F0F4FF;
+        }
+
+        .visibility-option input[type="radio"] {
+            display: none;
+        }
+
+        .visibility-option-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .visibility-option-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #EFF6FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #001E79;
+        }
+
+        .visibility-option.selected .visibility-option-icon {
+            background: #001E79;
+            color: white;
+        }
+
+        .visibility-option-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .visibility-option-description {
+            font-size: 13px;
+            color: #6B7280;
+            line-height: 1.5;
+        }
+
+        .access-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .access-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+        }
+
+        .access-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .access-item-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .access-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .access-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .access-item-role {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .access-item-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .access-level-select {
+            padding: 8px 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .remove-access-btn {
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: #EF4444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .remove-access-btn:hover {
+            background: #FEE2E2;
+            border-radius: 4px;
+        }
+
+        .add-access-btn {
+            padding: 12px 24px;
+            border: 2px dashed #D1D5DB;
+            background: white;
+            color: #374151;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .add-access-btn:hover {
+            border-color: #001E79;
+            color: #001E79;
+            background: #F0F4FF;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-item:hover {
+            background: #F9FAFB;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-item-label {
+            flex: 1;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .visibility-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">
+                <svg width="115" height="32" viewBox="0 0 115 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_78_336)">
+                        <g clip-path="url(#clip1_78_336)">
+                            <path d="M113.441 19.902C113.156 19.902 112.876 19.9868 112.639 20.1457C112.401 20.3046 112.216 20.5304 112.107 20.7946C111.997 21.0588 111.969 21.3494 112.025 21.6297C112.081 21.91 112.219 22.1674 112.422 22.3692C112.624 22.571 112.882 22.7082 113.162 22.7634C113.443 22.8187 113.733 22.7894 113.997 22.6794C114.261 22.5694 114.486 22.3836 114.645 22.1455C114.803 21.9074 114.887 21.6277 114.886 21.3419C114.887 21.1521 114.85 20.9639 114.778 20.7884C114.706 20.6129 114.6 20.4535 114.465 20.3195C114.331 20.1855 114.171 20.0795 113.995 20.0079C113.819 19.9362 113.631 19.9002 113.441 19.902ZM113.441 22.5684C113.194 22.5702 112.952 22.4985 112.745 22.3623C112.539 22.2262 112.377 22.0318 112.281 21.8037C112.185 21.5757 112.159 21.3243 112.207 21.0815C112.254 20.8387 112.372 20.6153 112.546 20.4398C112.721 20.2643 112.943 20.1444 113.186 20.0955C113.428 20.0466 113.68 20.0708 113.908 20.1651C114.137 20.2593 114.333 20.4194 114.47 20.6249C114.608 20.8305 114.681 21.0723 114.681 21.3196C114.687 21.4854 114.659 21.6505 114.599 21.8051C114.539 21.9597 114.448 22.1006 114.332 22.2193C114.216 22.338 114.078 22.4321 113.925 22.4959C113.772 22.5597 113.607 22.592 113.441 22.5907V22.5684Z" fill="#001E79"/>
+                            <path d="M114.068 21.7907C114.064 21.7027 114.035 21.6176 113.983 21.5463C113.951 21.5029 113.911 21.4667 113.864 21.4399C113.817 21.4131 113.766 21.3964 113.712 21.3908C113.792 21.3827 113.87 21.3569 113.939 21.3152C113.989 21.2813 114.03 21.2348 114.058 21.1803C114.085 21.1257 114.098 21.065 114.094 21.0041C114.103 20.9194 114.083 20.8342 114.039 20.7614C113.995 20.6885 113.929 20.6318 113.85 20.5997C113.706 20.5544 113.556 20.5348 113.405 20.5419H112.863V22.1285H113.139V21.5152H113.361C113.467 21.5085 113.573 21.5252 113.672 21.5641C113.828 21.6574 113.819 21.8574 113.823 22.0351C113.816 22.0689 113.816 22.1036 113.823 22.1374H114.081C114.066 22.1053 114.059 22.0704 114.059 22.0351C114.068 21.9596 114.068 21.9196 114.068 21.7907ZM113.392 21.3108H113.139V20.733H113.379C113.717 20.733 113.823 20.813 113.823 21.0263C113.823 21.2396 113.637 21.3108 113.392 21.3108Z" fill="#001E79"/>
+                            <path d="M52.4273 6.01845C50.2053 6.01845 48.4276 6.93395 47.7387 7.94277V0.00108337H42.8857V22.5907H47.6676V20.7686C48.4187 22.0085 50.0764 22.9506 52.2273 22.9506C56.7515 22.9506 59.9424 19.3953 59.9424 14.4534C59.9468 9.60043 57.1159 6.01845 52.4273 6.01845ZM51.3518 18.5243C49.432 18.5243 47.6721 17.1555 47.6721 14.4845C47.6721 11.8136 49.4497 10.4848 51.3518 10.4848C53.2539 10.4848 55.0005 11.7558 55.0005 14.4845C55.0005 17.2133 53.2717 18.5243 51.3518 18.5243Z" fill="#001E79"/>
+                            <path d="M75.4705 20.0842V12.1825C75.4705 8.86271 73.5507 5.92957 68.311 5.92957C63.5558 5.92957 61.4048 8.99159 61.2004 11.3025L65.4979 12.1914C65.5558 11.5113 65.8783 10.8811 66.3961 10.4365C66.9139 9.99181 67.5856 9.7682 68.2666 9.81375C69.8309 9.81375 70.6442 10.627 70.6442 11.5914C70.6442 12.1425 70.3509 12.5691 69.4709 12.698L65.6623 13.2846C62.9958 13.6757 60.876 15.3023 60.876 18.1732C60.876 20.7419 62.9292 23.0884 66.4756 23.0884C68.6266 23.0884 70.1865 22.1996 71.0353 20.8086C71.017 21.4203 71.0722 22.0321 71.1997 22.6307H75.6439C75.5184 21.7878 75.4604 20.9363 75.4705 20.0842ZM70.6531 16.2444C70.6531 18.7509 69.1554 19.4664 67.6888 19.4664C66.3245 19.4664 65.769 18.6532 65.769 17.8043C65.769 16.6666 66.5511 16.1778 67.5911 16.0267L70.6531 15.5378V16.2444Z" fill="#001E79"/>
+                            <path d="M92.8338 12.4358V22.5907H87.8875V13.258C87.8875 11.6625 87.0386 10.4582 85.2476 10.4582C83.6211 10.4582 82.5811 11.6625 82.5811 13.2891V22.5907H77.6304V6.4051H82.4167V8.26275C83.3055 6.73396 85.2832 5.9829 86.9409 5.9829C91.0117 5.98735 92.8338 8.88493 92.8338 12.4358Z" fill="#001E79"/>
+                            <path d="M100.006 0.00108337V11.8492L104.922 6.41398H111.339L105.019 13.218L111.468 22.5951H105.41L101.602 16.8977L100.006 18.622V22.5951H95.0601V0.00108337H100.006Z" fill="#001E79"/>
+                            <path d="M0 24.2217L19.332 31.9989L38.6641 24.2217V0.00108337H0V24.2217Z" fill="#CF2A36"/>
+                            <path d="M14.7059 20.9641C13.8615 22.364 12.0039 22.9506 10.3773 22.9506C6.43535 22.9506 4.22217 20.0842 4.22217 16.6355V6.40509H9.17294V15.5911C9.17294 17.1555 10.0173 18.391 11.7772 18.391C13.4393 18.391 14.4793 17.2533 14.4793 15.6267V6.40509H19.43V19.6931C19.4293 20.6612 19.4827 21.6285 19.59 22.5907H14.8392C14.7564 22.0523 14.7118 21.5088 14.7059 20.9641Z" fill="white"/>
+                            <path d="M25.5852 17.2533C25.6518 18.3598 26.434 19.4353 28.1272 19.4353C29.3982 19.4353 30.016 18.7509 30.016 18.0354C30.016 17.4488 29.6249 16.9599 28.4205 16.7022L26.5629 16.2578C23.1142 15.5289 21.7454 13.5735 21.7454 11.2937C21.7454 8.33386 24.3497 5.92068 27.9672 5.92068C32.6558 5.92068 34.2868 8.85382 34.4468 10.7426L30.336 11.4892C30.3169 11.2071 30.2418 10.9317 30.115 10.6791C29.9882 10.4264 29.8122 10.2016 29.5974 10.0178C29.3826 9.83407 29.1333 9.69503 28.864 9.60885C28.5948 9.52268 28.311 9.49111 28.0294 9.516C27.0828 9.516 26.2518 10.0715 26.2518 10.9159C26.2518 11.6003 26.8073 11.9914 27.5228 12.1203L29.6738 12.5647C33.0247 13.2446 34.6512 15.2667 34.6512 17.6399C34.6512 20.4086 32.5358 23.1106 28.2072 23.1106C23.1276 23.1106 21.501 19.822 21.3677 18.031L25.5852 17.2533Z" fill="white"/>
+                        </g>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_78_336">
+                            <rect width="114.89" height="32" fill="white"/>
+                        </clipPath>
+                        <clipPath id="clip1_78_336">
+                            <rect width="114.89" height="31.9978" fill="white" transform="translate(0 0.00108337)"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <span class="tagline">Discover. Access. Analyze</span>
+        </div>
+        <nav class="nav">
+            <a href="#" class="nav-item active">My Listings</a>
+            <a href="#" class="nav-item">Marketplace</a>
+            <a href="#" class="nav-item">Analytics</a>
+            <a href="#" class="nav-item">Governance</a>
+            <div class="user-avatar"></div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello, Coral</h1>
+                <p>You have 4 active listings generating steady interest, with 3 active bids currently in progress. Two new listings were added this month, and buyer engagement continues to trend upward.</p>
+            </div>
+            <button class="create-btn">
+                <span class="create-btn-icon">+</span>
+                Create New Listing
+            </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">Active Listings</div>
+                <div class="stat-value">4</div>
+                <div class="stat-change">+2 this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pending Approvals</div>
+                <div class="stat-value">2</div>
+                <div class="stat-change">+2 this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Downloads</div>
+                <div class="stat-value">121</div>
+                <div class="stat-change">+2 this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Value Generated</div>
+                <div class="stat-value">124%</div>
+                <div class="stat-change">+2 this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Listing Engagement</div>
+                <div class="stat-value">1.2k Views</div>
+                <div class="stat-change">+2 this month</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Filters -->
+        <div class="filters">
+            <svg class="filter-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"/>
+            </svg>
+            <select class="filter-dropdown">
+                <option>All Departments</option>
+            </select>
+            <select class="filter-dropdown">
+                <option>Medallion Level</option>
+            </select>
+            <select class="filter-dropdown">
+                <option>Assigned to me</option>
+            </select>
+            <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search my listings">
+            </div>
+            <div class="sort-container">
+                <button class="sort-btn" id="sortBtn">
+                    <i class="ph ph-sort-ascending"></i>
+                </button>
+                <div class="sort-dropdown" id="sortDropdown">
+                    <div class="sort-option selected" data-sort="a-z">
+                        <i class="ph ph-sort-ascending"></i>
+                        A-Z
+                    </div>
+                    <div class="sort-option" data-sort="z-a">
+                        <i class="ph ph-sort-descending"></i>
+                        Z-A
+                    </div>
+                    <div class="sort-option" data-sort="most-critical">
+                        <i class="ph ph-warning-circle"></i>
+                        Most Critical
+                    </div>
+                    <div class="sort-option" data-sort="newest">
+                        <i class="ph ph-clock"></i>
+                        Newest First
+                    </div>
+                    <div class="sort-option" data-sort="rating">
+                        <i class="ph ph-star"></i>
+                        Highest Rated
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listings Header -->
+        <div class="listings-header">
+            <h2>My Listings</h2>
+            <span class="listings-count">12</span>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Title of Data Product</div>
+                        <div class="product-meta">
+                            <span class="product-owner">JSON</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Real-time fraud detection events with risk scores, flagged transactions, and investigation status.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon blue">
+                        <i class="ph ph-chart-line"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">User Behavior Analytics</div>
+                        <div class="product-meta">
+                            <span class="product-owner">Dashboard</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Insights into customer interactions, engagement metrics, and conversion rates.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon green">
+                        <i class="ph ph-table"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">System Performance Metrics</div>
+                        <div class="product-meta">
+                            <span class="product-owner">Table</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">IT Operations</div>
+                <div class="product-description">Monitoring server uptime, response times, and user load.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Sentiment Analysis</div>
+                        <div class="product-meta">
+                            <span class="product-owner">JSON</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Analysis of customer feedback, sentiment scores, and satisfaction metrics.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 (Second Row) -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Title of Data Product</div>
+                        <div class="product-meta">
+                            <span class="product-owner">JSON</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Real-time fraud detection events with risk scores, flagged transactions, and investigation status.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon blue">
+                        <i class="ph ph-chart-line"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">User Behavior Analytics</div>
+                        <div class="product-meta">
+                            <span class="product-owner">Dashboard</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Insights into customer interactions, engagement metrics, and conversion rates.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon green">
+                        <i class="ph ph-chart-line"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">System Performance Metrics</div>
+                        <div class="product-meta">
+                            <span class="product-owner">Dashboard</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Monitoring server uptime, response times, and user load.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Sales Forecasting Tool</div>
+                        <div class="product-meta">
+                            <span class="product-owner">JSON</span>
+                            <span class="status-badge published">Published</span>
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-dept">Department</div>
+                <div class="product-description">Predictive analytics for sales trends, revenue projections, and seasonal variations.</div>
+                <div class="product-footer">
+                    <div class="active-users">
+                        <span>Active Users</span>
+                        <strong>132</strong>
+                    </div>
+                    <div class="alert">
+                        <span class="alert-icon">⚠</span>
+                        Alert title
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Detail View -->
+    <div id="detailView" class="detail-view">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a id="backToListings">My Listings</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbTitle">Product Detail</span>
+        </nav>
+
+        <!-- Detail Header -->
+        <section class="detail-header">
+            <div class="detail-title-section">
+                <div class="detail-left">
+                    <div class="detail-icon" id="detailIcon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="detail-title-info">
+                        <h1 id="detailTitle">Title of Data Product</h1>
+                        <div class="detail-meta">
+                            <div class="detail-rating">
+                                <span class="star">★</span>
+                                <span class="detail-rating-value" id="detailRating">4.8</span>
+                                <span class="detail-rating-count">(24 reviews)</span>
+                            </div>
+                            <span class="detail-badge published">Published</span>
+                            <span class="info-value" id="detailType">JSON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-center">
+                    <!-- Access Information -->
+                    <div class="access-info">
+                        <span class="access-label">Active Users with Access</span>
+                        <div class="access-avatars">
+                            <div class="avatar-stack">
+                                <div class="avatar-stack-item">JD</div>
+                                <div class="avatar-stack-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MS</div>
+                                <div class="avatar-stack-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">AJ</div>
+                                <div class="avatar-stack-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">RW</div>
+                                <div class="avatar-stack-item avatar-more">+128</div>
+                            </div>
+                            <span style="font-size: 14px; font-weight: 600; color: #1A1A1A;">132 Users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-right">
+                    <!-- Action Buttons -->
+                    <div class="detail-actions">
+                        <button class="action-btn">
+                            <i class="ph ph-pencil-simple"></i>
+                            Edit
+                        </button>
+                        <button class="action-btn">
+                            <i class="ph ph-copy"></i>
+                            Clone
+                        </button>
+                        <button class="action-btn primary">
+                            <i class="ph ph-share-network"></i>
+                            Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="detail-description" id="detailDescription">
+                Real-time fraud detection events with risk scores, flagged transactions, and investigation status.
+            </p>
+
+            <!-- KPIs -->
+            <div class="detail-kpis">
+                <div class="detail-kpi-card">
+                    <div class="detail-kpi-label">Total Views</div>
+                    <div class="detail-kpi-value">2,847</div>
+                </div>
+                <div class="detail-kpi-card">
+                    <div class="detail-kpi-label">Browsed</div>
+                    <div class="detail-kpi-value">1,234</div>
+                </div>
+                <div class="detail-kpi-card">
+                    <div class="detail-kpi-label">Access Requests</div>
+                    <div class="detail-kpi-value">456</div>
+                </div>
+                <div class="detail-kpi-card">
+                    <div class="detail-kpi-label">Active Users</div>
+                    <div class="detail-kpi-value">132</div>
+                </div>
+                <div class="detail-kpi-card">
+                    <div class="detail-kpi-label">Downloads</div>
+                    <div class="detail-kpi-value">789</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dataset Sample - Moved up -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-table"></i>
+                Sample Dataset
+            </h3>
+            <div class="dataset-sample">
+                <table class="dataset-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Timestamp</th>
+                            <th>Amount</th>
+                            <th>Risk Score</th>
+                            <th>Status</th>
+                            <th>Customer ID</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TXN-2847291</td>
+                            <td>2026-01-23 14:32:15</td>
+                            <td>$1,245.00</td>
+                            <td>0.87</td>
+                            <td>FLAGGED</td>
+                            <td>CUST-9382</td>
+                            <td>New York, NY</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847292</td>
+                            <td>2026-01-23 14:33:42</td>
+                            <td>$89.99</td>
+                            <td>0.12</td>
+                            <td>APPROVED</td>
+                            <td>CUST-7651</td>
+                            <td>Los Angeles, CA</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847293</td>
+                            <td>2026-01-23 14:35:08</td>
+                            <td>$4,567.50</td>
+                            <td>0.94</td>
+                            <td>UNDER REVIEW</td>
+                            <td>CUST-3421</td>
+                            <td>Chicago, IL</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847294</td>
+                            <td>2026-01-23 14:36:21</td>
+                            <td>$234.75</td>
+                            <td>0.23</td>
+                            <td>APPROVED</td>
+                            <td>CUST-1192</td>
+                            <td>Houston, TX</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847295</td>
+                            <td>2026-01-23 14:37:54</td>
+                            <td>$8,920.00</td>
+                            <td>0.76</td>
+                            <td>FLAGGED</td>
+                            <td>CUST-5543</td>
+                            <td>Phoenix, AZ</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847296</td>
+                            <td>2026-01-23 14:39:12</td>
+                            <td>$156.30</td>
+                            <td>0.08</td>
+                            <td>APPROVED</td>
+                            <td>CUST-8821</td>
+                            <td>Philadelphia, PA</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847297</td>
+                            <td>2026-01-23 14:40:45</td>
+                            <td>$2,345.67</td>
+                            <td>0.65</td>
+                            <td>UNDER REVIEW</td>
+                            <td>CUST-2234</td>
+                            <td>San Antonio, TX</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847298</td>
+                            <td>2026-01-23 14:42:18</td>
+                            <td>$445.20</td>
+                            <td>0.31</td>
+                            <td>APPROVED</td>
+                            <td>CUST-6677</td>
+                            <td>San Diego, CA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Detail Content -->
+        <div class="detail-content">
+            <!-- Product Information -->
+            <section class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="ph ph-info"></i>
+                    Product Information
+                </h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Approved Date</span>
+                        <span class="info-value">January 15, 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Publish Date</span>
+                        <span class="info-value">January 22, 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Domain</span>
+                        <span class="info-value">Risk Management</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Sub-domain</span>
+                        <span class="info-value">Fraud Detection</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Role</span>
+                        <span class="info-value">Data Product Owner</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Entitlement</span>
+                        <span class="info-value">Confidential - Restricted Access</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Value Proposition -->
+            <section class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="ph ph-lightbulb"></i>
+                    Value Proposition
+                </h3>
+                <div class="value-prop">
+                    <p>
+                        This data product provides real-time insights into fraudulent activities across all transaction channels.
+                        By leveraging advanced machine learning algorithms and historical patterns, it enables rapid identification
+                        of suspicious transactions with 95% accuracy. Teams using this dataset have reduced fraud losses by 42%
+                        and decreased false positive rates by 38%, resulting in improved customer experience and significant cost savings.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Consumers -->
+            <section class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="ph ph-user-check"></i>
+                    Approved Consumers
+                </h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Total Consumers</span>
+                        <span class="info-value">132 Active Users</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Primary Team</span>
+                        <span class="info-value">Risk Operations</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Secondary Teams</span>
+                        <span class="info-value">Compliance, Analytics, Security</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Governance -->
+            <section class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="ph ph-shield-check"></i>
+                    Governance
+                </h3>
+                <div class="governance-grid">
+                    <div class="governance-card">
+                        <h4><i class="ph ph-book-open"></i> Catalog</h4>
+                        <ul>
+                            <li><i class="ph-fill ph-check-circle"></i> Registered in Enterprise Catalog</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Metadata Complete</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Ownership Defined</li>
+                            <li><i class="ph-fill ph-check-circle"></i> SLA Documented</li>
+                        </ul>
+                    </div>
+                    <div class="governance-card">
+                        <h4><i class="ph ph-git-branch"></i> Lineage</h4>
+                        <ul>
+                            <li><i class="ph-fill ph-check-circle"></i> Source Systems Tracked</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Transformation Rules</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Dependency Mapping</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Impact Analysis Available</li>
+                        </ul>
+                    </div>
+                    <div class="governance-card">
+                        <h4><i class="ph ph-check-square"></i> Data Quality</h4>
+                        <ul>
+                            <li><i class="ph-fill ph-check-circle"></i> Quality Score: 98%</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Completeness: 99.2%</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Accuracy: 97.8%</li>
+                            <li><i class="ph-fill ph-check-circle"></i> Timeliness: Real-time</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews & Comments -->
+            <section class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="ph ph-chat-centered-text"></i>
+                    Reviews & Comments
+                </h3>
+                <div class="comments-section">
+                    <div class="comment">
+                        <div class="comment-avatar"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">Sarah Mitchell</span>
+                                <span class="comment-date">2 days ago</span>
+                            </div>
+                            <div class="comment-text">
+                                This dataset has been invaluable for our fraud detection initiatives. The real-time updates and high accuracy rate have helped us identify suspicious patterns much faster than before. Highly recommended!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">David Chen</span>
+                                <span class="comment-date">5 days ago</span>
+                            </div>
+                            <div class="comment-text">
+                                The data quality is exceptional. We've integrated this into our risk scoring model and seen a significant reduction in false positives. The documentation is also very thorough.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">Emily Rodriguez</span>
+                                <span class="comment-date">1 week ago</span>
+                            </div>
+                            <div class="comment-text">
+                                Great product! The lineage tracking and governance controls give us confidence in using this data for regulatory reporting. Would love to see more historical data added.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <button class="back-btn" onclick="hideDetailView()">
+                <i class="ph ph-arrow-left"></i>
+                Back to All Listings
+            </button>
+        </div>
+    </div>
+
+    <!-- Create Form View -->
+    <div id="createFormView" class="create-form-view">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a id="backToListingsFromCreate">My Listings</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Create New Listing</span>
+        </nav>
+
+        <!-- Form Header -->
+        <div class="form-header">
+            <h1>Create New Data Product Listing</h1>
+            <p id="stepIndicator">Step 1 of 3: General Information</p>
+        </div>
+
+        <!-- Form Content -->
+        <div class="form-content" id="formContent">
+            <!-- Step 1: General Information -->
+            <div id="step1" class="form-step">
+                <div class="form-section">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-info"></i>
+                        General Information
+                    </h2>
+
+                <div class="form-grid">
+                    <!-- Data Product Name -->
+                    <div class="form-field full-width">
+                        <label class="form-label">
+                            Data Product Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            placeholder="Enter a descriptive name for your data product"
+                            id="productName"
+                        />
+                        <span class="form-helper">Choose a clear, descriptive name that reflects the data product's purpose</span>
+                    </div>
+
+                    <!-- Data Product Owner -->
+                    <div class="form-field">
+                        <label class="form-label">
+                            Data Product Owner
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            placeholder="Enter owner name or email"
+                            id="productOwner"
+                        />
+                        <span class="form-helper">Person responsible for this data product</span>
+                    </div>
+
+                    <!-- Domain -->
+                    <div class="form-field">
+                        <label class="form-label">
+                            Domain
+                            <span class="required">*</span>
+                        </label>
+                        <select class="form-select" id="productDomain">
+                            <option value="">Select domain</option>
+                            <option value="risk-management">Risk Management</option>
+                            <option value="customer-analytics">Customer Analytics</option>
+                            <option value="finance">Finance</option>
+                            <option value="operations">Operations</option>
+                            <option value="compliance">Compliance</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                        <span class="form-helper">Primary business domain</span>
+                    </div>
+
+                    <!-- Data Product Type -->
+                    <div class="form-field">
+                        <label class="form-label">
+                            Data Product Type
+                            <span class="required">*</span>
+                        </label>
+                        <select class="form-select" id="productType">
+                            <option value="">Select type</option>
+                            <option value="json">JSON</option>
+                            <option value="csv">CSV</option>
+                            <option value="parquet">Parquet</option>
+                            <option value="api">API</option>
+                            <option value="dashboard">Dashboard</option>
+                            <option value="report">Report</option>
+                        </select>
+                        <span class="form-helper">Format or type of data product</span>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-field">
+                        <label class="form-label">
+                            Category
+                            <span class="required">*</span>
+                        </label>
+                        <select class="form-select" id="productCategory">
+                            <option value="">Select category</option>
+                            <option value="fraud-detection">Fraud Detection</option>
+                            <option value="customer-insights">Customer Insights</option>
+                            <option value="financial-analytics">Financial Analytics</option>
+                            <option value="operational-metrics">Operational Metrics</option>
+                            <option value="compliance-reporting">Compliance Reporting</option>
+                            <option value="predictive-analytics">Predictive Analytics</option>
+                        </select>
+                        <span class="form-helper">Functional category of the data product</span>
+                    </div>
+
+                    <!-- Short Summary -->
+                    <div class="form-field full-width">
+                        <label class="form-label">
+                            Short Summary
+                            <span class="required">*</span>
+                        </label>
+                        <textarea
+                            class="form-textarea"
+                            placeholder="Enter a brief summary (1-2 sentences)"
+                            id="productSummary"
+                            maxlength="200"
+                        ></textarea>
+                        <span class="form-helper">Brief description shown in listing cards (max 200 characters)</span>
+                    </div>
+
+                    <!-- Full Description -->
+                    <div class="form-field full-width">
+                        <label class="form-label">
+                            Full Description
+                            <span class="required">*</span>
+                        </label>
+                        <textarea
+                            class="form-textarea large"
+                            placeholder="Provide a detailed description of the data product, its purpose, and key features"
+                            id="productDescription"
+                        ></textarea>
+                        <span class="form-helper">Comprehensive description including use cases, benefits, and technical details</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Step 2: Data Source & Connection -->
+            <div id="step2" class="form-step" style="display: none;">
+                <div class="form-section">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-database"></i>
+                        Select Data Source Platform
+                    </h2>
+                    <span class="form-helper" style="display: block; margin-bottom: 24px;">Choose where your data is stored</span>
+
+                    <div class="platform-grid">
+                        <div class="platform-card" onclick="selectPlatform('snowflake', this)">
+                            <div class="platform-card-icon">
+                                <i class="ph ph-snowflake"></i>
+                            </div>
+                            <div class="platform-card-name">Snowflake</div>
+                        </div>
+                        <div class="platform-card" onclick="selectPlatform('databricks', this)">
+                            <div class="platform-card-icon">
+                                <i class="ph ph-database"></i>
+                            </div>
+                            <div class="platform-card-name">Databricks</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Details -->
+                <div class="form-section" style="margin-top: 32px;">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-plug"></i>
+                        Connection Details
+                    </h2>
+
+                    <div class="form-grid">
+                        <div class="form-field full-width">
+                            <label class="form-label">
+                                Connection Name
+                                <span class="required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                placeholder="e.g., Production Data Warehouse"
+                                id="connectionName"
+                            />
+                            <span class="form-helper">A friendly name to identify this connection</span>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label">
+                                Database/Schema Path
+                                <span class="required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                placeholder="e.g., DATABASE.SCHEMA"
+                                id="connectionPath"
+                            />
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label">
+                                Authentication
+                                <span class="required">*</span>
+                            </label>
+                            <select class="form-select" id="authMethod">
+                                <option value="">Select method</option>
+                                <option value="sso">Single Sign-On (SSO)</option>
+                                <option value="service-account">Service Account</option>
+                                <option value="oauth">OAuth 2.0</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <button class="connection-test-btn" onclick="testConnection()">
+                                <i class="ph ph-plug"></i>
+                                Test Connection
+                            </button>
+                            <div id="connectionStatus" style="display: none; margin-top: 16px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Datasets Section -->
+                <div class="form-section" style="margin-top: 32px;">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-table"></i>
+                        Select Datasets
+                    </h2>
+                    <span class="form-helper" style="display: block; margin-bottom: 24px;">Add the tables or datasets you want to share</span>
+
+                    <div id="datasetList" class="dataset-list">
+                        <!-- Default dataset item -->
+                        <div class="dataset-item" data-dataset-index="0">
+                            <div class="dataset-item-header">
+                                <span class="dataset-item-title">Dataset 1</span>
+                                <button class="remove-dataset-btn" onclick="removeDataset(0)" style="display: none;">
+                                    <i class="ph ph-trash"></i>
+                                    Remove
+                                </button>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label class="form-label">
+                                        Table Name
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="e.g., customer_transactions"
+                                        name="tableName"
+                                    />
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">
+                                        Display Name
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="e.g., Customer Transactions"
+                                        name="displayName"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="add-dataset-btn" onclick="addDataset()">
+                        <i class="ph ph-plus"></i>
+                        Add Another Dataset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Entitlements & Access -->
+            <div id="step3" class="form-step" style="display: none;">
+                <div class="form-section">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-lock-key"></i>
+                        Visibility & Discovery
+                    </h2>
+
+                    <div class="form-field">
+                        <label class="form-label">
+                            Who can discover this data product?
+                            <span class="required">*</span>
+                        </label>
+                        <span class="form-helper">Control who can find and view this data product in the marketplace</span>
+                    </div>
+
+                    <div class="visibility-options">
+                        <label class="visibility-option selected" onclick="selectVisibility('public')">
+                            <input type="radio" name="visibility" value="public" checked>
+                            <div class="visibility-option-header">
+                                <div class="visibility-option-icon">
+                                    <i class="ph ph-globe"></i>
+                                </div>
+                                <div class="visibility-option-title">Public</div>
+                            </div>
+                            <div class="visibility-option-description">
+                                Anyone in the organization can discover and request access to this data product.
+                            </div>
+                        </label>
+
+                        <label class="visibility-option" onclick="selectVisibility('restricted')">
+                            <input type="radio" name="visibility" value="restricted">
+                            <div class="visibility-option-header">
+                                <div class="visibility-option-icon">
+                                    <i class="ph ph-lock"></i>
+                                </div>
+                                <div class="visibility-option-title">Restricted</div>
+                            </div>
+                            <div class="visibility-option-description">
+                                Only specific users, teams, or departments can discover this data product.
+                            </div>
+                        </label>
+
+                        <label class="visibility-option" onclick="selectVisibility('private')">
+                            <input type="radio" name="visibility" value="private">
+                            <div class="visibility-option-header">
+                                <div class="visibility-option-icon">
+                                    <i class="ph ph-eye-slash"></i>
+                                </div>
+                                <div class="visibility-option-title">Private</div>
+                            </div>
+                            <div class="visibility-option-description">
+                                Hidden from discovery. Only users you explicitly grant access can see it.
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Restricted Access Controls (shown when Restricted is selected) -->
+                <div class="form-section" id="restrictedAccessSection" style="display: none; margin-top: 32px;">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-users"></i>
+                        Discovery Access
+                    </h2>
+
+                    <div class="form-field">
+                        <label class="form-label">
+                            Departments
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="department" value="risk-management">
+                                <span class="checkbox-item-label">Risk Management</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="department" value="compliance">
+                                <span class="checkbox-item-label">Compliance</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="department" value="analytics">
+                                <span class="checkbox-item-label">Analytics</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="department" value="finance">
+                                <span class="checkbox-item-label">Finance</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="department" value="operations">
+                                <span class="checkbox-item-label">Operations</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Management -->
+                <div class="form-section" style="margin-top: 32px;">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-shield-check"></i>
+                        Access Management
+                    </h2>
+
+                    <div class="form-field">
+                        <label class="form-label">
+                            Who can access this data product?
+                        </label>
+                        <span class="form-helper">Grant specific users or teams direct access to consume this data product</span>
+                    </div>
+
+                    <div id="accessList" class="access-list">
+                        <!-- Example access items will be added here dynamically -->
+                    </div>
+
+                    <button class="add-access-btn" onclick="addAccessUser()">
+                        <i class="ph ph-plus"></i>
+                        Add User or Team
+                    </button>
+                </div>
+
+                <!-- Additional Settings -->
+                <div class="form-section" style="margin-top: 32px;">
+                    <h2 class="form-section-title">
+                        <i class="ph ph-gear"></i>
+                        Additional Settings
+                    </h2>
+
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label class="form-label">
+                                Access Request Approval
+                                <span class="required">*</span>
+                            </label>
+                            <select class="form-select" id="approvalRequired">
+                                <option value="manual">Manual approval required</option>
+                                <option value="automatic">Automatic approval</option>
+                                <option value="none">No approval needed</option>
+                            </select>
+                            <span class="form-helper">How access requests should be handled</span>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label">
+                                Data Classification
+                                <span class="required">*</span>
+                            </label>
+                            <select class="form-select" id="dataClassification">
+                                <option value="">Select classification</option>
+                                <option value="public">Public</option>
+                                <option value="internal">Internal</option>
+                                <option value="confidential">Confidential</option>
+                                <option value="restricted">Restricted</option>
+                                <option value="highly-restricted">Highly Restricted</option>
+                            </select>
+                            <span class="form-helper">Data sensitivity level</span>
+                        </div>
+                    </div>
+
+                    <div class="form-field" style="margin-top: 24px;">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="requireTraining">
+                            <span class="checkbox-item-label">Require data usage training before access</span>
+                        </label>
+                    </div>
+
+                    <div class="form-field" style="margin-top: 12px;">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="enableAuditLog">
+                            <span class="checkbox-item-label">Enable audit logging for all access</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <div class="form-actions-left">
+                <button class="btn btn-outline" onclick="hideCreateForm()" id="cancelBtn">
+                    <i class="ph ph-x"></i>
+                    Cancel
+                </button>
+                <button class="btn btn-outline" onclick="previousStep()" id="previousBtn" style="display: none;">
+                    <i class="ph ph-arrow-left"></i>
+                    Previous
+                </button>
+            </div>
+            <div class="form-actions-right">
+                <button class="btn btn-secondary">
+                    <i class="ph ph-floppy-disk"></i>
+                    Save as Draft
+                </button>
+                <button class="btn btn-primary" onclick="nextStep()" id="nextBtn">
+                    <span id="nextBtnText">Next Step</span>
+                    <i class="ph ph-arrow-right" id="nextBtnIcon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show detail view
+        function showDetailView(productData) {
+            // Hide main content
+            document.querySelector('.hero').classList.add('hide');
+            document.querySelector('.main-content').classList.add('hide');
+
+            // Show detail view
+            document.getElementById('detailView').classList.add('active');
+
+            // Update breadcrumb
+            document.getElementById('breadcrumbTitle').textContent = productData.title;
+
+            // Update detail information
+            document.getElementById('detailTitle').textContent = productData.title;
+            document.getElementById('detailDescription').textContent = productData.description;
+            document.getElementById('detailRating').textContent = productData.rating;
+            document.getElementById('detailType').textContent = productData.type;
+
+            // Update icon
+            const detailIcon = document.getElementById('detailIcon');
+            detailIcon.className = 'detail-icon ' + productData.iconClass;
+            detailIcon.innerHTML = '<i class="' + productData.icon + '"></i>';
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Hide detail view
+        function hideDetailView() {
+            // Show main content
+            document.querySelector('.hero').classList.remove('hide');
+            document.querySelector('.main-content').classList.remove('hide');
+
+            // Hide detail view
+            document.getElementById('detailView').classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Show create form
+        function showCreateForm() {
+            // Hide main content and detail view
+            document.querySelector('.hero').classList.add('hide');
+            document.querySelector('.main-content').classList.add('hide');
+            document.getElementById('detailView').classList.remove('active');
+
+            // Show create form
+            document.getElementById('createFormView').classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Hide create form
+        function hideCreateForm() {
+            // Show main content
+            document.querySelector('.hero').classList.remove('hide');
+            document.querySelector('.main-content').classList.remove('hide');
+
+            // Hide create form
+            document.getElementById('createFormView').classList.remove('active');
+
+            // Reset to step 1
+            if (typeof currentStep !== 'undefined') {
+                document.getElementById('step1').style.display = 'block';
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'none';
+                document.getElementById('stepIndicator').textContent = 'Step 1 of 3: General Information';
+                document.getElementById('previousBtn').style.display = 'none';
+
+                // Reset button text
+                document.getElementById('nextBtnText').textContent = 'Next Step';
+                document.getElementById('nextBtnIcon').className = 'ph ph-arrow-right';
+
+                currentStep = 1;
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Add click event to back to listings link
+        document.getElementById('backToListings').addEventListener('click', hideDetailView);
+
+        // Add click event to back to listings from create form
+        document.getElementById('backToListingsFromCreate').addEventListener('click', hideCreateForm);
+
+        // Add click event to Create New Listing button
+        document.querySelector('.create-btn').addEventListener('click', showCreateForm);
+
+        // Multi-step form management
+        let currentStep = 1;
+        let datasetCount = 1;
+
+        function nextStep() {
+            if (currentStep === 1) {
+                // Move to step 2
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('stepIndicator').textContent = 'Step 2 of 3: Data Source & Connection';
+                document.getElementById('previousBtn').style.display = 'flex';
+                currentStep = 2;
+            } else if (currentStep === 2) {
+                // Move to step 3
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                document.getElementById('stepIndicator').textContent = 'Step 3 of 3: Entitlements & Access';
+
+                // Update button text for final step
+                document.getElementById('nextBtnText').textContent = 'Submit for Approval';
+                document.getElementById('nextBtnIcon').className = 'ph ph-check';
+
+                currentStep = 3;
+            } else if (currentStep === 3) {
+                // Submit for approval
+                alert('Form submitted for approval!');
+                hideCreateForm();
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function previousStep() {
+            if (currentStep === 2) {
+                // Move back to step 1
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step1').style.display = 'block';
+                document.getElementById('stepIndicator').textContent = 'Step 1 of 3: General Information';
+                document.getElementById('previousBtn').style.display = 'none';
+                currentStep = 1;
+            } else if (currentStep === 3) {
+                // Move back to step 2
+                document.getElementById('step3').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('stepIndicator').textContent = 'Step 2 of 3: Data Source & Connection';
+
+                // Restore button text
+                document.getElementById('nextBtnText').textContent = 'Next Step';
+                document.getElementById('nextBtnIcon').className = 'ph ph-arrow-right';
+
+                currentStep = 2;
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function addDataset() {
+            const datasetList = document.getElementById('datasetList');
+            const newIndex = datasetCount;
+
+            const datasetItem = document.createElement('div');
+            datasetItem.className = 'dataset-item';
+            datasetItem.setAttribute('data-dataset-index', newIndex);
+            datasetItem.innerHTML = `
+                <div class="dataset-item-header">
+                    <span class="dataset-item-title">Dataset ${newIndex + 1}</span>
+                    <button class="remove-dataset-btn" onclick="removeDataset(${newIndex})">
+                        <i class="ph ph-trash"></i>
+                        Remove
+                    </button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label class="form-label">
+                            Table Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            placeholder="e.g., customer_transactions"
+                            name="tableName"
+                        />
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label">
+                            Display Name
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            placeholder="e.g., Customer Transactions"
+                            name="displayName"
+                        />
+                    </div>
+                </div>
+            `;
+
+            datasetList.appendChild(datasetItem);
+            datasetCount++;
+
+            // Show remove button on all datasets if there's more than one
+            updateDatasetRemoveButtons();
+        }
+
+        function removeDataset(index) {
+            const dataset = document.querySelector(`[data-dataset-index="${index}"]`);
+            if (dataset) {
+                dataset.remove();
+                updateDatasetRemoveButtons();
+                updateDatasetTitles();
+            }
+        }
+
+        function updateDatasetRemoveButtons() {
+            const datasets = document.querySelectorAll('.dataset-item');
+            datasets.forEach((dataset, index) => {
+                const removeBtn = dataset.querySelector('.remove-dataset-btn');
+                if (datasets.length > 1) {
+                    removeBtn.style.display = 'flex';
+                } else {
+                    removeBtn.style.display = 'none';
+                }
+            });
+        }
+
+        function updateDatasetTitles() {
+            const datasets = document.querySelectorAll('.dataset-item');
+            datasets.forEach((dataset, index) => {
+                const title = dataset.querySelector('.dataset-item-title');
+                title.textContent = `Dataset ${index + 1}`;
+            });
+        }
+
+        // Step 2: Platform selection
+        let selectedPlatform = null;
+
+        function selectPlatform(platform, element) {
+            // Remove selected class from all platform cards
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            selectedPlatform = platform;
+        }
+
+        function testConnection() {
+            const statusDiv = document.getElementById('connectionStatus');
+            statusDiv.style.display = 'flex';
+            statusDiv.className = 'connection-status';
+            statusDiv.innerHTML = '<i class="ph ph-spinner"></i> Testing connection...';
+
+            // Simulate connection test
+            setTimeout(() => {
+                const success = Math.random() > 0.3;
+                if (success) {
+                    statusDiv.className = 'connection-status success';
+                    statusDiv.innerHTML = '<i class="ph ph-check-circle"></i> Connection successful!';
+                } else {
+                    statusDiv.className = 'connection-status error';
+                    statusDiv.innerHTML = '<i class="ph ph-x-circle"></i> Connection failed. Please check your credentials.';
+                }
+            }, 1500);
+        }
+
+        // Step 3: Entitlements functions
+        function selectVisibility(type) {
+            // Remove selected class from all options
+            document.querySelectorAll('.visibility-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+
+            // Show/hide restricted access section
+            const restrictedSection = document.getElementById('restrictedAccessSection');
+            if (type === 'restricted') {
+                restrictedSection.style.display = 'block';
+            } else {
+                restrictedSection.style.display = 'none';
+            }
+        }
+
+        let accessUserCount = 0;
+        const sampleUsers = [
+            { name: 'Sarah Mitchell', role: 'Risk Analyst', initials: 'SM', color: '#667eea' },
+            { name: 'David Chen', role: 'Data Engineer', initials: 'DC', color: '#f093fb' },
+            { name: 'Emily Rodriguez', role: 'Compliance Officer', initials: 'ER', color: '#4facfe' },
+            { name: 'Michael Brown', role: 'Analytics Lead', initials: 'MB', color: '#43e97b' },
+            { name: 'Lisa Thompson', role: 'Security Analyst', initials: 'LT', color: '#fa709a' }
+        ];
+
+        function addAccessUser() {
+            const accessList = document.getElementById('accessList');
+            const user = sampleUsers[accessUserCount % sampleUsers.length];
+
+            const accessItem = document.createElement('div');
+            accessItem.className = 'access-item';
+            accessItem.setAttribute('data-access-index', accessUserCount);
+            accessItem.innerHTML = `
+                <div class="access-item-left">
+                    <div class="access-item-avatar" style="background: ${user.color}">
+                        ${user.initials}
+                    </div>
+                    <div class="access-item-info">
+                        <div class="access-item-name">${user.name}</div>
+                        <div class="access-item-role">${user.role}</div>
+                    </div>
+                </div>
+                <div class="access-item-right">
+                    <select class="access-level-select">
+                        <option value="viewer">Viewer</option>
+                        <option value="analyst">Analyst</option>
+                        <option value="editor">Editor</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button class="remove-access-btn" onclick="removeAccessUser(${accessUserCount})">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+            `;
+
+            accessList.appendChild(accessItem);
+            accessUserCount++;
+        }
+
+        function removeAccessUser(index) {
+            const accessItem = document.querySelector(`[data-access-index="${index}"]`);
+            if (accessItem) {
+                accessItem.remove();
+            }
+        }
+
+        // Add click events to all product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.product-title').textContent;
+                const description = this.querySelector('.product-description').textContent;
+                const rating = this.querySelector('.rating-value').textContent;
+                const type = this.querySelector('.product-owner').textContent;
+                const icon = this.querySelector('.product-icon i').className;
+                const iconClass = this.querySelector('.product-icon').className.replace('product-icon', '').trim();
+
+                showDetailView({
+                    title: title,
+                    description: description,
+                    rating: rating,
+                    type: type,
+                    icon: icon,
+                    iconClass: iconClass
+                });
+            });
+        });
+
+        // Sort button functionality
+        const sortBtn = document.getElementById('sortBtn');
+        const sortDropdown = document.getElementById('sortDropdown');
+        const sortOptions = document.querySelectorAll('.sort-option');
+
+        // Toggle dropdown
+        sortBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sortDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!sortBtn.contains(e.target) && !sortDropdown.contains(e.target)) {
+                sortDropdown.classList.remove('active');
+            }
+        });
+
+        // Handle sort option selection
+        sortOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                sortOptions.forEach(opt => opt.classList.remove('selected'));
+
+                // Add selected class to clicked option
+                this.classList.add('selected');
+
+                // Update button icon based on selection
+                const sortType = this.getAttribute('data-sort');
+                const icon = this.querySelector('i').className;
+                sortBtn.querySelector('i').className = icon;
+
+                // Close dropdown
+                sortDropdown.classList.remove('active');
+
+                // Here you can add sorting logic based on sortType
+                console.log('Sort by:', sortType);
+            });
+        });
+    </script>
+</body>
+</html>
