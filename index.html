@@ -88,6 +88,39 @@
             background: #2563EB;
         }
 
+        .cart-icon-btn {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 16px;
+            padding: 0;
+            margin-right: 16px;
+        }
+
+        .cart-icon-btn i {
+            font-size: 24px;
+            color: #374151;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #DC2626;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .cart-count:empty {
+            display: none;
+        }
+
         .user-avatar {
             width: 32px;
             height: 32px;
@@ -1149,6 +1182,43 @@
             background: white;
         }
 
+        /* Data Structure JSON */
+        .data-structure-json {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .data-structure-json pre {
+            margin: 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #1A1A1A;
+        }
+
+        .data-structure-json code {
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .json-key {
+            color: #0369A1;
+            font-weight: 600;
+        }
+
+        .json-string {
+            color: #15803D;
+        }
+
+        .json-number {
+            color: #C2410C;
+        }
+
+        .json-boolean {
+            color: #7C3AED;
+        }
+
         .value-prop {
             background: #EFF6FF;
             padding: 24px;
@@ -2184,6 +2254,804 @@
                 top: 14px;
             }
         }
+
+        /* Marketplace View Styles */
+        .marketplace-view {
+            display: none;
+            background: #F9FAFB;
+        }
+
+        .marketplace-hero {
+            background: #EFF6FF;
+            padding: 32px 40px;
+            margin-top: 65px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .marketplace-hero h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .marketplace-hero p {
+            font-size: 14px;
+            color: #6B7280;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .marketplace-content {
+            padding: 32px 40px;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            margin-bottom: 48px;
+        }
+
+        .recommendations-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .recommendations-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .recommendations-header h3 {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 24px;
+        }
+
+        .hidden-recommendation {
+            display: none;
+        }
+
+        .recommendations-grid.expanded .hidden-recommendation {
+            display: block;
+        }
+
+        .view-all-link {
+            color: #2563EB;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .recommendation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 2px solid #E5E7EB;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .recommendation-card:hover {
+            border-color: #2563EB;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        .recommendation-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #2563EB;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .recommendation-badge.trending {
+            background: #059669;
+        }
+
+        .recommendation-badge.new {
+            background: #DC2626;
+        }
+
+        .recommendation-card .product-icon {
+            width: 48px;
+            height: 48px;
+            background: #EFF6FF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .recommendation-card .product-icon i {
+            font-size: 24px;
+            color: #2563EB;
+        }
+
+        .recommendation-card .product-icon.blue {
+            background: #DBEAFE;
+        }
+
+        .recommendation-card .product-icon.green {
+            background: #D1FAE5;
+        }
+
+        .recommendation-card .product-icon.green i {
+            color: #059669;
+        }
+
+        .recommendation-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-dept {
+            font-size: 13px;
+            color: #6B7280;
+            margin-bottom: 12px;
+        }
+
+        .recommendation-stats {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        /* Marketplace Cards */
+        .marketplace-card {
+            position: relative;
+        }
+
+        .marketplace-card .product-footer {
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .marketplace-card-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .marketplace-card-actions .favorite-btn {
+            position: static;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .marketplace-card-actions .favorite-btn:hover {
+            background: #FEF2F2;
+            border-color: #DC2626;
+        }
+
+        .marketplace-card-actions .favorite-btn i {
+            font-size: 18px;
+            color: #6B7280;
+        }
+
+        .marketplace-card-actions .favorite-btn.active i {
+            color: #DC2626;
+        }
+
+        .marketplace-card-actions .share-btn {
+            background: white;
+            border: 1px solid #D1D5DB;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+
+        .marketplace-card-actions .share-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .marketplace-card-actions .share-btn i {
+            font-size: 18px;
+            color: #6B7280;
+        }
+
+        .marketplace-card-actions .add-to-cart-btn {
+            background: #1E40AF;
+            border: 1px solid #1E40AF;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .marketplace-card-actions .add-to-cart-btn:hover {
+            background: #1E3A8A;
+        }
+
+        .marketplace-card-actions .add-to-cart-btn i {
+            font-size: 16px;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .favorite-btn:hover {
+            background: #FEF2F2;
+            border-color: #DC2626;
+        }
+
+        .favorite-btn i {
+            font-size: 18px;
+            color: #9CA3AF;
+        }
+
+        .favorite-btn.active i {
+            color: #DC2626;
+        }
+
+        /* Consumer Product Detail */
+        .consumer-product-detail {
+            display: none;
+            background: #F9FAFB;
+            margin-top: 65px;
+        }
+
+        .consumer-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .consumer-actions .favorite-btn {
+            position: static;
+            width: 40px;
+            height: 40px;
+        }
+
+        .available-in-dropdown {
+            position: relative;
+        }
+
+        .available-in-btn {
+            background: white;
+            border: 1px solid #D1D5DB;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 180px;
+            justify-content: space-between;
+        }
+
+        .available-in-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .available-in-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            min-width: 180px;
+        }
+
+        .available-in-menu.active {
+            display: block;
+        }
+
+        .available-in-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .available-in-option:hover {
+            background: #F9FAFB;
+        }
+
+        .available-in-option.selected {
+            background: #EFF6FF;
+            color: #2563EB;
+            font-weight: 500;
+        }
+
+        .add-to-cart-btn {
+            background: #001E79;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #001557;
+        }
+
+        /* Cart View */
+        .cart-view {
+            display: none;
+            background: #F9FAFB;
+            min-height: calc(100vh - 65px);
+            margin-top: 65px;
+        }
+
+        .cart-header {
+            background: white;
+            padding: 24px 40px;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .continue-shopping-btn {
+            background: white;
+            border: 1px solid #D1D5DB;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .continue-shopping-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .cart-content {
+            display: flex;
+            gap: 24px;
+            padding: 32px 40px;
+            max-width: 1400px;
+        }
+
+        .cart-items {
+            flex: 1;
+        }
+
+        .cart-item-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .cart-item-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .cart-item-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #DC2626;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-item-btn:hover {
+            color: #991B1B;
+        }
+
+        .business-justification {
+            margin-top: 16px;
+        }
+
+        .business-justification label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .business-justification textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #374151;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .business-justification textarea:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 64px 24px;
+        }
+
+        .empty-cart i {
+            font-size: 64px;
+            color: #D1D5DB;
+            margin-bottom: 16px;
+        }
+
+        .empty-cart h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .empty-cart p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 24px;
+        }
+
+        .cart-summary {
+            width: 360px;
+            flex-shrink: 0;
+        }
+
+        .cart-summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #E5E7EB;
+            position: sticky;
+            top: 97px;
+        }
+
+        .cart-summary-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #E5E7EB;
+            margin-top: 12px;
+            padding-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .summary-label {
+            color: #6B7280;
+        }
+
+        .summary-value {
+            color: #111827;
+            font-weight: 500;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #001E79;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+
+        .checkout-btn:hover {
+            background: #001557;
+        }
+
+        .checkout-btn:disabled {
+            background: #D1D5DB;
+            cursor: not-allowed;
+        }
+
+        /* Checkout View */
+        .checkout-view {
+            display: none;
+            background: #F9FAFB;
+            min-height: calc(100vh - 65px);
+            margin-top: 65px;
+        }
+
+        .checkout-header {
+            background: white;
+            padding: 24px 40px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .checkout-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .checkout-content {
+            display: flex;
+            gap: 24px;
+            padding: 32px 40px;
+            max-width: 1400px;
+        }
+
+        .checkout-main {
+            flex: 1;
+        }
+
+        .checkout-section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .checkout-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .delivery-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .delivery-option {
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .delivery-option:hover {
+            border-color: #2563EB;
+            background: #F9FAFB;
+        }
+
+        .delivery-option.selected {
+            border-color: #2563EB;
+            background: #EFF6FF;
+        }
+
+        .delivery-option input[type="radio"] {
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .delivery-option-content {
+            flex: 1;
+        }
+
+        .delivery-option-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .delivery-option-desc {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .order-items {
+            margin-top: 16px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .order-item-meta {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .submit-order-btn {
+            width: 100%;
+            background: #001E79;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+
+        .submit-order-btn:hover {
+            background: #001557;
+        }
+
+        .submit-order-btn:disabled {
+            background: #D1D5DB;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 1200px) {
+            .recommendations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cart-content,
+            .checkout-content {
+                flex-direction: column;
+            }
+
+            .cart-summary {
+                width: 100%;
+            }
+
+            .delivery-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .marketplace-hero {
+                padding: 32px 20px;
+            }
+
+            .marketplace-content {
+                padding: 24px 20px;
+            }
+
+            .cart-header,
+            .checkout-header {
+                padding: 20px;
+            }
+
+            .cart-content,
+            .checkout-content {
+                padding: 24px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2218,10 +3086,14 @@
             <span class="tagline">Discover. Access. Analyze</span>
         </div>
         <nav class="nav">
-            <a href="#" class="nav-item active">My Listings</a>
-            <a href="#" class="nav-item">Marketplace</a>
+            <a href="#" class="nav-item active" id="myListingsTab" onclick="showMyListings()">My Listings</a>
+            <a href="#" class="nav-item" id="marketplaceTab" onclick="showMarketplace()">Marketplace</a>
             <a href="#" class="nav-item">Analytics</a>
             <a href="#" class="nav-item">Governance</a>
+            <button class="cart-icon-btn" id="cartBtn" onclick="showCart()">
+                <i class="ph ph-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
             <div class="user-avatar"></div>
         </nav>
     </header>
@@ -2803,6 +3675,1125 @@
         </div>
     </main>
 
+    <!-- Marketplace View -->
+    <div id="marketplaceView" class="marketplace-view" style="display: none;">
+        <!-- Marketplace Hero -->
+        <section class="marketplace-hero">
+            <div class="marketplace-hero-content">
+                <div class="marketplace-hero-text">
+                    <h1>Data Marketplace</h1>
+                    <p>Discover and access curated data products from across the organization</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketplace Content -->
+        <main class="marketplace-content">
+            <!-- Filters -->
+            <div class="filters">
+                <!-- Department Filter -->
+                <div class="filter-container">
+                    <button class="filter-btn" id="marketplaceDepartmentFilterBtn" onclick="toggleMarketplaceFilterPanel(event, 'marketplaceDepartmentFilterPanel')">
+                        All Departments
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="filter-panel" id="marketplaceDepartmentFilterPanel">
+                        <div class="filter-search">
+                            <i class="ph ph-magnifying-glass"></i>
+                            <input type="text" placeholder="Search departments..." id="marketplaceDepartmentSearch" oninput="searchMarketplaceDepartments()">
+                        </div>
+                        <div class="filter-options" id="marketplaceDepartmentOptions">
+                            <label class="filter-option">
+                                <input type="checkbox" value="Risk Management" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Risk Management</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Finance" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Finance</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Marketing" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Marketing</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Operations" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Operations</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Data Science" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Data Science</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Engineering" data-filter="marketplace-department" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Engineering</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-container">
+                    <button class="filter-btn" id="marketplaceCategoryFilterBtn" onclick="toggleMarketplaceFilterPanel(event, 'marketplaceCategoryFilterPanel')">
+                        All Categories
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="filter-panel" id="marketplaceCategoryFilterPanel">
+                        <div class="filter-options" id="marketplaceCategoryOptions">
+                            <label class="filter-option">
+                                <input type="checkbox" value="Fraud Detection" data-filter="marketplace-category" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Fraud Detection</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Analytics" data-filter="marketplace-category" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Analytics</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Financial Data" data-filter="marketplace-category" onchange="handleMarketplaceFilterChange(this)">
+                                <span>Financial Data</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search marketplace">
+                </div>
+            </div>
+
+            <!-- Active Filters for Marketplace -->
+            <div class="active-filters-container" id="marketplaceActiveFiltersContainer" style="display: none;">
+                <div class="active-filters-header">
+                    <span class="active-filters-label">Active Filters Indicator</span>
+                </div>
+                <div class="active-filters" id="marketplaceActiveFilters"></div>
+            </div>
+
+            <!-- Recommendations Section -->
+            <div class="recommendations-section">
+                <div class="recommendations-header">
+                    <h3 class="section-title">Recommended for You</h3>
+                    <a href="#" class="view-all-link" id="seeMoreRecommendations" onclick="toggleRecommendations(event)">
+                        See more
+                    </a>
+                </div>
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <div class="recommendation-card" onclick="showConsumerProductDetail('fraud-alerts')">
+                        <div class="recommendation-badge">Top Pick</div>
+                        <div class="product-icon">
+                            <i class="ph ph-shield-warning"></i>
+                        </div>
+                        <div class="recommendation-title">Fraud Detection Alerts</div>
+                        <div class="recommendation-dept">Risk Management</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.8</span>
+                            <span>•</span>
+                            <span>132 users</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card" onclick="showConsumerProductDetail('customer-360')">
+                        <div class="recommendation-badge trending">Trending</div>
+                        <div class="product-icon blue">
+                            <i class="ph ph-user-circle"></i>
+                        </div>
+                        <div class="recommendation-title">Customer 360 View</div>
+                        <div class="recommendation-dept">Customer Analytics</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.9</span>
+                            <span>•</span>
+                            <span>248 users</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card" onclick="showConsumerProductDetail('market-data')">
+                        <div class="recommendation-badge new">New</div>
+                        <div class="product-icon green">
+                            <i class="ph ph-trend-up"></i>
+                        </div>
+                        <div class="recommendation-title">Market Intelligence</div>
+                        <div class="recommendation-dept">Investment</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.9</span>
+                            <span>•</span>
+                            <span>203 users</span>
+                        </div>
+                    </div>
+
+                    <!-- Hidden initially -->
+                    <div class="recommendation-card hidden-recommendation" onclick="showConsumerProductDetail('transaction-data')">
+                        <div class="product-icon">
+                            <i class="ph ph-currency-dollar"></i>
+                        </div>
+                        <div class="recommendation-title">Transaction History</div>
+                        <div class="recommendation-dept">Financial Operations</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.6</span>
+                            <span>•</span>
+                            <span>89 users</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card hidden-recommendation" onclick="showConsumerProductDetail('risk-scores')">
+                        <div class="product-icon">
+                            <i class="ph ph-chart-line"></i>
+                        </div>
+                        <div class="recommendation-title">Credit Risk Scores</div>
+                        <div class="recommendation-dept">Risk Management</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.7</span>
+                            <span>•</span>
+                            <span>156 users</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card hidden-recommendation" onclick="showConsumerProductDetail('loan-portfolio')">
+                        <div class="product-icon">
+                            <i class="ph ph-house"></i>
+                        </div>
+                        <div class="recommendation-title">Loan Portfolio Data</div>
+                        <div class="recommendation-dept">Lending</div>
+                        <div class="recommendation-stats">
+                            <span>★ 4.8</span>
+                            <span>•</span>
+                            <span>94 users</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Products -->
+            <div class="listings-header">
+                <h2>All Data Products</h2>
+                <span class="listings-count">12</span>
+            </div>
+
+            <!-- Product Grid (reusing same tiles) -->
+            <div class="product-grid">
+                <!-- Same product cards as My Listings but with consumer actions -->
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('fraud-alerts')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-shield-warning"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Fraud Detection Alerts</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Risk Analytics Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('fraud-alerts')" style="cursor: pointer;">Fraud Detection</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('fraud-alerts')" style="cursor: pointer;">Real-time fraud detection events with risk scores, flagged transactions, and investigation status.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>132</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('fraud-alerts', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('fraud-alerts', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('customer-360')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-user-circle"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Customer 360 View</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Customer Insights</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('customer-360')" style="cursor: pointer;">Customer Analytics</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('customer-360')" style="cursor: pointer;">Comprehensive customer profiles aggregating account activity, demographics, and behavioral patterns.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>248</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('customer-360', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('customer-360', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('transaction-data')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-currency-dollar"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Transaction History</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Payments Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('transaction-data')" style="cursor: pointer;">Financial Operations</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('transaction-data')" style="cursor: pointer;">Complete transaction records including credits, debits, and pending authorizations across all accounts.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>89</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('transaction-data', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('transaction-data', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('risk-scores')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-chart-line"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Credit Risk Scores</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Risk Management</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('risk-scores')" style="cursor: pointer;">Risk Management</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('risk-scores')" style="cursor: pointer;">Credit risk assessments and scoring models for loan underwriting and portfolio management.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>156</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('risk-scores', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('risk-scores', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('branch-metrics')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-building"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Branch Performance</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Operations Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('branch-metrics')" style="cursor: pointer;">Operations</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('branch-metrics')" style="cursor: pointer;">Branch-level metrics including foot traffic, transaction volumes, and service quality indicators.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>67</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('branch-metrics', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('branch-metrics', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('loan-portfolio')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-house"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Loan Portfolio Data</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Lending Services</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('loan-portfolio')" style="cursor: pointer;">Lending</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('loan-portfolio')" style="cursor: pointer;">Mortgage, auto, and personal loan data including terms, balances, and payment history.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>94</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('loan-portfolio', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('loan-portfolio', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('market-data')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-trend-up"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Market Intelligence</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Investment Research</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('market-data')" style="cursor: pointer;">Investment</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('market-data')" style="cursor: pointer;">Real-time market data, economic indicators, and investment research for wealth management.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>203</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('market-data', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('market-data', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('compliance-reports')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-file-text"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Compliance Reports</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Compliance Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('compliance-reports')" style="cursor: pointer;">Compliance</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('compliance-reports')" style="cursor: pointer;">Regulatory compliance data including KYC, AML alerts, and audit trail documentation.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>78</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('compliance-reports', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('compliance-reports', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('atm-usage')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-bank"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">ATM Usage Analytics</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Channel Analytics</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('atm-usage')" style="cursor: pointer;">Operations</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('atm-usage')" style="cursor: pointer;">ATM transaction data including withdrawals, deposits, location usage patterns, and uptime metrics.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>52</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('atm-usage', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('atm-usage', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('mobile-banking')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-device-mobile"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Mobile Banking Metrics</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Digital Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('mobile-banking')" style="cursor: pointer;">Digital Banking</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('mobile-banking')" style="cursor: pointer;">Mobile app usage statistics, feature adoption rates, and user engagement analytics.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>187</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('mobile-banking', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('mobile-banking', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('wire-transfers')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-paper-plane-tilt"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Wire Transfer Data</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Treasury Team</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('wire-transfers')" style="cursor: pointer;">Treasury</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('wire-transfers')" style="cursor: pointer;">Domestic and international wire transfer records including beneficiary data and compliance checks.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>61</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('wire-transfers', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('wire-transfers', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card marketplace-card">
+                    <div class="product-header" onclick="showConsumerProductDetail('merchant-analytics')" style="cursor: pointer;">
+                        <div class="product-icon">
+                            <i class="ph ph-storefront"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Merchant Analytics</div>
+                            <div class="product-meta">
+                                <span class="product-owner">Merchant Services</span>
+                                <span class="status-badge published">Published</span>
+                                <div class="product-rating">
+                                    <span class="star">★</span>
+                                    <span class="rating-value">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-dept" onclick="showConsumerProductDetail('merchant-analytics')" style="cursor: pointer;">Merchant Services</div>
+                    <div class="product-description" onclick="showConsumerProductDetail('merchant-analytics')" style="cursor: pointer;">Merchant transaction data, processing volumes, and business intelligence for commercial clients.</div>
+                    <div class="product-footer">
+                        <div class="active-users">
+                            <span>Active Users</span>
+                            <strong>143</strong>
+                        </div>
+                        <div class="marketplace-card-actions">
+                            <button class="favorite-btn" onclick="toggleFavorite('merchant-analytics', event)" title="Add to favorites">
+                                <i class="ph ph-heart"></i>
+                            </button>
+                            <button class="share-btn" onclick="shareProduct(event)" title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </button>
+                            <button class="add-to-cart-btn" onclick="addToCart('merchant-analytics', event)">
+                                <i class="ph ph-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Consumer Product Detail View -->
+    <div id="consumerProductDetail" class="consumer-product-detail" style="display: none;">
+        <!-- Similar to producer detail but with consumer actions -->
+        <nav class="breadcrumb">
+            <a onclick="showMarketplace()">Marketplace</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Product Detail</span>
+        </nav>
+
+        <!-- Detail Header with Consumer Actions -->
+        <section class="detail-header">
+            <div class="detail-title-section">
+                <div class="detail-left">
+                    <div class="detail-icon">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div class="detail-title-info">
+                        <h1>Fraud Detection Alerts</h1>
+                        <div class="detail-meta">
+                            <div class="detail-rating">
+                                <span class="star">★</span>
+                                <span class="detail-rating-value">4.8</span>
+                                <span class="detail-rating-count">(24 reviews)</span>
+                            </div>
+                            <span class="info-value">JSON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consumer-actions">
+                    <button class="favorite-btn" onclick="toggleFavorite('fraud-alerts', event)" title="Add to favorites">
+                        <i class="ph ph-heart"></i>
+                    </button>
+                    <div class="available-in-dropdown">
+                        <button class="available-in-btn" onclick="toggleAvailableInDropdown()">
+                            Available in Domo
+                            <i class="ph ph-caret-down"></i>
+                        </button>
+                        <div class="available-in-menu">
+                            <div class="available-in-option selected" onclick="selectAvailableIn('Domo')">
+                                <i class="ph ph-check-circle" style="color: #10B981;"></i>
+                                Domo
+                            </div>
+                            <div class="available-in-option" onclick="selectAvailableIn('PowerBI')">
+                                <i class="ph ph-check-circle" style="color: #10B981;"></i>
+                                PowerBI
+                            </div>
+                            <div class="available-in-option" onclick="selectAvailableIn('Tableau')">
+                                <i class="ph ph-check-circle" style="color: #10B981;"></i>
+                                Tableau
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="shareProduct()" style="background: white; border: 1px solid #D1D5DB; color: #374151;">
+                        <i class="ph ph-share-network"></i>
+                        Share
+                    </button>
+                    <button class="add-to-cart-btn" onclick="addToCart('fraud-alerts')">
+                        <i class="ph ph-shopping-cart"></i>
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <p class="detail-description">
+                Real-time fraud detection events with comprehensive risk scores, flagged transactions, and investigation status tracking. This dataset provides critical insights for risk management teams.
+            </p>
+        </section>
+
+        <!-- Sample Dataset -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-table"></i>
+                Sample Dataset
+            </h3>
+            <div class="dataset-sample">
+                <table class="dataset-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Timestamp</th>
+                            <th>Amount</th>
+                            <th>Risk Score</th>
+                            <th>Status</th>
+                            <th>Customer ID</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TXN-2847291</td>
+                            <td>2026-01-23 14:32:15</td>
+                            <td>$1,245.00</td>
+                            <td>0.87</td>
+                            <td>FLAGGED</td>
+                            <td>CUST-9382</td>
+                            <td>New York, NY</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847292</td>
+                            <td>2026-01-23 14:33:42</td>
+                            <td>$89.99</td>
+                            <td>0.12</td>
+                            <td>APPROVED</td>
+                            <td>CUST-7651</td>
+                            <td>Los Angeles, CA</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847293</td>
+                            <td>2026-01-23 14:35:08</td>
+                            <td>$4,567.50</td>
+                            <td>0.94</td>
+                            <td>UNDER REVIEW</td>
+                            <td>CUST-3421</td>
+                            <td>Chicago, IL</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847294</td>
+                            <td>2026-01-23 14:36:21</td>
+                            <td>$234.75</td>
+                            <td>0.23</td>
+                            <td>APPROVED</td>
+                            <td>CUST-1192</td>
+                            <td>Houston, TX</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847295</td>
+                            <td>2026-01-23 14:37:54</td>
+                            <td>$8,920.00</td>
+                            <td>0.76</td>
+                            <td>FLAGGED</td>
+                            <td>CUST-5543</td>
+                            <td>Phoenix, AZ</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847296</td>
+                            <td>2026-01-23 14:39:12</td>
+                            <td>$156.30</td>
+                            <td>0.08</td>
+                            <td>APPROVED</td>
+                            <td>CUST-8821</td>
+                            <td>Philadelphia, PA</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847297</td>
+                            <td>2026-01-23 14:40:45</td>
+                            <td>$2,345.67</td>
+                            <td>0.65</td>
+                            <td>UNDER REVIEW</td>
+                            <td>CUST-2234</td>
+                            <td>San Antonio, TX</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-2847298</td>
+                            <td>2026-01-23 14:42:18</td>
+                            <td>$445.20</td>
+                            <td>0.31</td>
+                            <td>APPROVED</td>
+                            <td>CUST-6677</td>
+                            <td>San Diego, CA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Data Structure -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-database"></i>
+                Data Structure
+            </h3>
+            <div class="data-structure-json">
+                <pre><code>{
+  <span class="json-key">"dataset_id"</span>: <span class="json-string">"ds-003"</span>,
+  <span class="json-key">"name"</span>: <span class="json-string">"Fraud Detection Alerts"</span>,
+  <span class="json-key">"category"</span>: <span class="json-string">"Fraud Detection"</span>,
+  <span class="json-key">"total_records"</span>: <span class="json-number">18234</span>,
+  <span class="json-key">"fields"</span>: [
+    { <span class="json-key">"name"</span>: <span class="json-string">"id"</span>, <span class="json-key">"type"</span>: <span class="json-string">"string"</span>, <span class="json-key">"indexed"</span>: <span class="json-boolean">true</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"timestamp"</span>, <span class="json-key">"type"</span>: <span class="json-string">"datetime"</span>, <span class="json-key">"indexed"</span>: <span class="json-boolean">true</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"amount"</span>, <span class="json-key">"type"</span>: <span class="json-string">"decimal"</span>, <span class="json-key">"precision"</span>: <span class="json-number">2</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"status"</span>, <span class="json-key">"type"</span>: <span class="json-string">"string"</span>, <span class="json-key">"enum"</span>: [<span class="json-string">"pending"</span>, <span class="json-string">"completed"</span>, <span class="json-string">"failed"</span>] },
+    { <span class="json-key">"name"</span>: <span class="json-string">"metadata"</span>, <span class="json-key">"type"</span>: <span class="json-string">"json"</span> }
+  ],
+  <span class="json-key">"update_frequency"</span>: <span class="json-string">"Real-time"</span>,
+  <span class="json-key">"last_updated"</span>: <span class="json-string">"30 mins ago"</span>
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Product Information -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-info"></i>
+                Product Information
+            </h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Approved Date</span>
+                    <span class="info-value">January 15, 2026</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Publish Date</span>
+                    <span class="info-value">January 22, 2026</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Domain</span>
+                    <span class="info-value">Risk Management</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Sub-domain</span>
+                    <span class="info-value">Fraud Detection</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Role</span>
+                    <span class="info-value">Data Product Owner</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Entitlement</span>
+                    <span class="info-value">Confidential - Restricted Access</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approved Consumers -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-user-check"></i>
+                Approved Consumers
+            </h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Total Consumers</span>
+                    <span class="info-value">132 Active Users</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Primary Team</span>
+                    <span class="info-value">Risk Operations</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Secondary Teams</span>
+                    <span class="info-value">Compliance, Analytics, Security</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Governance -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-shield-check"></i>
+                Governance
+            </h3>
+            <div class="governance-grid">
+                <div class="governance-card">
+                    <h4><i class="ph ph-book-open"></i> Catalog</h4>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i> Registered in Enterprise Catalog</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Metadata Complete</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Ownership Defined</li>
+                        <li><i class="ph-fill ph-check-circle"></i> SLA Documented</li>
+                    </ul>
+                </div>
+                <div class="governance-card">
+                    <h4><i class="ph ph-git-branch"></i> Lineage</h4>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i> Source Systems Tracked</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Transformation Rules</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Dependency Mapping</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Impact Analysis Available</li>
+                    </ul>
+                </div>
+                <div class="governance-card">
+                    <h4><i class="ph ph-check-square"></i> Data Quality</h4>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i> Quality Score: 98%</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Completeness: 99.2%</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Accuracy: 97.8%</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Timeliness: Real-time</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews & Comments -->
+        <section style="padding: 32px 40px; background: white;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-chat-centered-text"></i>
+                Reviews & Comments
+            </h3>
+            <div class="comments-section">
+                <div class="comment">
+                    <div class="comment-avatar"></div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-author">Sarah Mitchell</span>
+                            <span class="comment-date">2 days ago</span>
+                        </div>
+                        <div class="comment-text">
+                            This dataset has been invaluable for our fraud detection initiatives. The real-time updates and high accuracy rate have helped us identify suspicious patterns much faster than before. Highly recommended!
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-author">David Chen</span>
+                            <span class="comment-date">5 days ago</span>
+                        </div>
+                        <div class="comment-text">
+                            The data quality is exceptional. We've integrated this into our risk scoring model and seen a significant reduction in false positives. The documentation is also very thorough.
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-author">Emily Rodriguez</span>
+                            <span class="comment-date">1 week ago</span>
+                        </div>
+                        <div class="comment-text">
+                            Perfect for compliance reporting. The data lineage feature is particularly helpful for audit trails. Our team has saved countless hours with this product.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart View -->
+    <div id="cartView" class="cart-view" style="display: none;">
+        <nav class="breadcrumb">
+            <a onclick="showMarketplace()">Marketplace</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Shopping Cart</span>
+        </nav>
+
+        <div class="cart-header">
+            <h1>Shopping Cart</h1>
+            <button class="continue-shopping-btn" onclick="hideCart()">
+                <i class="ph ph-arrow-left"></i>
+                Continue Shopping
+            </button>
+        </div>
+
+        <div class="cart-content">
+            <div class="cart-items" id="cartItemsList">
+                <div class="empty-cart" id="emptyCartMessage">
+                    <i class="ph ph-shopping-cart-simple"></i>
+                    <h3>Your cart is empty</h3>
+                    <p>Add data products from the marketplace to get started</p>
+                    <button class="btn-primary" onclick="showMarketplace()">Browse Marketplace</button>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Total Items:</span>
+                    <span id="cartTotalItems">0</span>
+                </div>
+                <button class="btn-primary btn-full" onclick="showCheckout()" id="proceedToCheckoutBtn" disabled>
+                    Proceed to Checkout
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout View -->
+    <div id="checkoutView" class="checkout-view" style="display: none;">
+        <nav class="breadcrumb">
+            <a onclick="showMarketplace()">Marketplace</a>
+            <span class="breadcrumb-separator">/</span>
+            <a onclick="showCart()">Shopping Cart</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Checkout</span>
+        </nav>
+
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+        </div>
+
+        <div class="checkout-content">
+            <div class="checkout-main">
+                <div class="checkout-section">
+                    <h2>Select Delivery Destination</h2>
+                    <div class="delivery-options">
+                        <div class="delivery-option selected" onclick="selectDeliveryOption('domo')">
+                            <input type="radio" name="delivery" value="domo" checked>
+                            <div class="delivery-option-content">
+                                <div class="delivery-option-label">
+                                    <i class="ph ph-database"></i>
+                                    Domo
+                                </div>
+                                <div class="delivery-option-desc">Connect directly to your Domo workspace</div>
+                            </div>
+                        </div>
+                        <div class="delivery-option" onclick="selectDeliveryOption('powerbi')">
+                            <input type="radio" name="delivery" value="powerbi">
+                            <div class="delivery-option-content">
+                                <div class="delivery-option-label">
+                                    <i class="ph ph-chart-bar"></i>
+                                    PowerBI
+                                </div>
+                                <div class="delivery-option-desc">Integrate with Microsoft PowerBI</div>
+                            </div>
+                        </div>
+                        <div class="delivery-option" onclick="selectDeliveryOption('tableau')">
+                            <input type="radio" name="delivery" value="tableau">
+                            <div class="delivery-option-content">
+                                <div class="delivery-option-label">
+                                    <i class="ph ph-chart-line"></i>
+                                    Tableau
+                                </div>
+                                <div class="delivery-option-desc">Connect to Tableau Desktop or Server</div>
+                            </div>
+                        </div>
+                        <div class="delivery-option" onclick="selectDeliveryOption('email')">
+                            <input type="radio" name="delivery" value="email">
+                            <div class="delivery-option-content">
+                                <div class="delivery-option-label">
+                                    <i class="ph ph-envelope"></i>
+                                    Email
+                                </div>
+                                <div class="delivery-option-desc">Receive data via email attachment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-section">
+                    <h2>Order Items</h2>
+                    <div class="order-items"></div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="cart-summary-card">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span class="summary-label">Total Items</span>
+                        <span class="summary-value">0</span>
+                    </div>
+                    <button class="submit-order-btn" onclick="submitOrder()">
+                        Submit Request
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Detail View -->
     <div id="detailView" class="detail-view">
         <!-- Breadcrumb -->
@@ -2992,6 +4983,31 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </section>
+
+        <!-- Data Structure -->
+        <section style="padding: 32px 40px; background: white; border-bottom: 1px solid #E5E7EB;">
+            <h3 class="detail-section-title">
+                <i class="ph ph-database"></i>
+                Data Structure
+            </h3>
+            <div class="data-structure-json">
+                <pre><code>{
+  <span class="json-key">"dataset_id"</span>: <span class="json-string">"ds-003"</span>,
+  <span class="json-key">"name"</span>: <span class="json-string">"Fraud Detection Alerts"</span>,
+  <span class="json-key">"category"</span>: <span class="json-string">"Fraud Detection"</span>,
+  <span class="json-key">"total_records"</span>: <span class="json-number">18234</span>,
+  <span class="json-key">"fields"</span>: [
+    { <span class="json-key">"name"</span>: <span class="json-string">"id"</span>, <span class="json-key">"type"</span>: <span class="json-string">"string"</span>, <span class="json-key">"indexed"</span>: <span class="json-boolean">true</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"timestamp"</span>, <span class="json-key">"type"</span>: <span class="json-string">"datetime"</span>, <span class="json-key">"indexed"</span>: <span class="json-boolean">true</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"amount"</span>, <span class="json-key">"type"</span>: <span class="json-string">"decimal"</span>, <span class="json-key">"precision"</span>: <span class="json-number">2</span> },
+    { <span class="json-key">"name"</span>: <span class="json-string">"status"</span>, <span class="json-key">"type"</span>: <span class="json-string">"string"</span>, <span class="json-key">"enum"</span>: [<span class="json-string">"pending"</span>, <span class="json-string">"completed"</span>, <span class="json-string">"failed"</span>] },
+    { <span class="json-key">"name"</span>: <span class="json-string">"metadata"</span>, <span class="json-key">"type"</span>: <span class="json-string">"json"</span> }
+  ],
+  <span class="json-key">"update_frequency"</span>: <span class="json-string">"Real-time"</span>,
+  <span class="json-key">"last_updated"</span>: <span class="json-string">"30 mins ago"</span>
+}</code></pre>
             </div>
         </section>
 
@@ -4085,38 +6101,38 @@
             status: []
         };
 
-        // Toggle filter panels
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const filterPanels = document.querySelectorAll('.filter-panel');
+        // Toggle filter panels - ONLY for producer view (main-content)
+        const producerFilterBtns = document.querySelectorAll('.main-content .filter-btn');
+        const producerFilterPanels = document.querySelectorAll('.main-content .filter-panel');
 
-        filterBtns.forEach((btn, index) => {
+        producerFilterBtns.forEach((btn, index) => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
 
                 // Close other panels
-                filterBtns.forEach((b, i) => {
+                producerFilterBtns.forEach((b, i) => {
                     if (i !== index) {
                         b.classList.remove('active');
-                        filterPanels[i].classList.remove('active');
+                        producerFilterPanels[i].classList.remove('active');
                     }
                 });
 
                 // Toggle current panel
                 btn.classList.toggle('active');
-                filterPanels[index].classList.toggle('active');
+                producerFilterPanels[index].classList.toggle('active');
             });
         });
 
-        // Close filter panels when clicking outside
+        // Close filter panels when clicking outside - ONLY producer view
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.filter-container')) {
-                filterBtns.forEach(btn => btn.classList.remove('active'));
-                filterPanels.forEach(panel => panel.classList.remove('active'));
+            if (!e.target.closest('.main-content .filter-container')) {
+                producerFilterBtns.forEach(btn => btn.classList.remove('active'));
+                producerFilterPanels.forEach(panel => panel.classList.remove('active'));
             }
         });
 
-        // Handle checkbox filters (Department and Medallion)
-        document.querySelectorAll('input[type="checkbox"][data-filter]').forEach(checkbox => {
+        // Handle checkbox filters (Department and Medallion) - ONLY producer view
+        document.querySelectorAll('.main-content input[type="checkbox"][data-filter]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const filterType = this.getAttribute('data-filter');
                 const value = this.value;
@@ -4560,6 +6576,651 @@
             currentDraftId = null; // Reset for new listing
             originalShowCreateForm();
         };
+
+        // ========== MARKETPLACE FUNCTIONS ==========
+
+        // Cart state management
+        let cart = JSON.parse(localStorage.getItem('marketplaceCart') || '[]');
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+                if (cart.length === 0) {
+                    cartCount.style.display = 'none';
+                } else {
+                    cartCount.style.display = 'flex';
+                }
+            }
+        }
+
+        function showMarketplace() {
+            // Hide all other views
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'none';
+            document.getElementById('detailView').classList.remove('active');
+            document.getElementById('createFormView').classList.remove('active');
+            document.getElementById('draftsView').classList.remove('active');
+            document.getElementById('consumerProductDetail').style.display = 'none';
+            document.getElementById('cartView').style.display = 'none';
+            document.getElementById('checkoutView').style.display = 'none';
+
+            // Show marketplace view
+            document.getElementById('marketplaceView').style.display = 'block';
+
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('marketplaceTab').classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function showMyListings() {
+            // Hide all other views
+            document.getElementById('marketplaceView').style.display = 'none';
+            document.getElementById('consumerProductDetail').style.display = 'none';
+            document.getElementById('cartView').style.display = 'none';
+            document.getElementById('checkoutView').style.display = 'none';
+            document.getElementById('detailView').classList.remove('active');
+            document.getElementById('createFormView').classList.remove('active');
+            document.getElementById('draftsView').classList.remove('active');
+
+            // Show producer view
+            document.querySelector('.hero').style.display = 'block';
+            document.querySelector('.main-content').style.display = 'block';
+
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('myListingsTab').classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Product data for marketplace
+        const marketplaceProducts = {
+            'fraud-alerts': {
+                name: 'Fraud Detection Alerts',
+                icon: 'ph-shield-warning',
+                type: 'JSON',
+                rating: 4.8,
+                reviewCount: 24,
+                activeUsers: 132,
+                category: 'Fraud Detection',
+                owner: 'Risk Analytics Team',
+                description: 'Real-time fraud detection events with comprehensive risk scores, flagged transactions, and investigation status tracking. This dataset provides critical insights for risk management teams.',
+                domain: 'Risk Management',
+                subdomain: 'Fraud Detection'
+            },
+            'customer-360': {
+                name: 'Customer 360 View',
+                icon: 'ph-user-circle',
+                type: 'Parquet',
+                rating: 4.9,
+                reviewCount: 31,
+                activeUsers: 248,
+                category: 'Customer Analytics',
+                owner: 'Customer Insights',
+                description: 'Comprehensive customer profiles aggregating account activity, demographics, and behavioral patterns across all touchpoints.',
+                domain: 'Customer Experience',
+                subdomain: 'Customer Analytics'
+            },
+            'transaction-data': {
+                name: 'Transaction History',
+                icon: 'ph-currency-dollar',
+                type: 'CSV',
+                rating: 4.6,
+                reviewCount: 18,
+                activeUsers: 89,
+                category: 'Financial Operations',
+                owner: 'Payments Team',
+                description: 'Complete transaction records including credits, debits, and pending authorizations across all accounts.',
+                domain: 'Finance',
+                subdomain: 'Financial Operations'
+            },
+            'risk-scores': {
+                name: 'Credit Risk Scores',
+                icon: 'ph-chart-line',
+                type: 'JSON',
+                rating: 4.7,
+                reviewCount: 22,
+                activeUsers: 156,
+                category: 'Risk Management',
+                owner: 'Risk Management',
+                description: 'Credit risk assessments and scoring models for loan underwriting and portfolio management.',
+                domain: 'Risk Management',
+                subdomain: 'Credit Risk'
+            },
+            'loan-portfolio': {
+                name: 'Loan Portfolio Data',
+                icon: 'ph-house',
+                type: 'Parquet',
+                rating: 4.8,
+                reviewCount: 20,
+                activeUsers: 94,
+                category: 'Lending',
+                owner: 'Lending Services',
+                description: 'Mortgage, auto, and personal loan data including terms, balances, and payment history.',
+                domain: 'Lending',
+                subdomain: 'Loan Management'
+            },
+            'market-data': {
+                name: 'Market Intelligence',
+                icon: 'ph-trend-up',
+                type: 'JSON',
+                rating: 4.9,
+                reviewCount: 28,
+                activeUsers: 203,
+                category: 'Investment',
+                owner: 'Investment Research',
+                description: 'Real-time market data, economic indicators, and investment research for wealth management.',
+                domain: 'Investment',
+                subdomain: 'Market Analysis'
+            }
+        };
+
+        function showConsumerProductDetail(productId) {
+            // Hide other views
+            document.getElementById('marketplaceView').style.display = 'none';
+            document.getElementById('cartView').style.display = 'none';
+            document.getElementById('checkoutView').style.display = 'none';
+            document.getElementById('detailView').style.display = 'none';
+            document.getElementById('detailView').classList.remove('active');
+            document.getElementById('createFormView').classList.remove('active');
+            document.getElementById('draftsView').classList.remove('active');
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'none';
+
+            // Get product data
+            const product = marketplaceProducts[productId] || marketplaceProducts['fraud-alerts'];
+
+            // Update breadcrumb
+            const breadcrumbCurrent = document.querySelector('#consumerProductDetail .breadcrumb-current');
+            if (breadcrumbCurrent) {
+                breadcrumbCurrent.textContent = product.name;
+            }
+
+            // Update header
+            const detailView = document.getElementById('consumerProductDetail');
+            const iconEl = detailView.querySelector('.detail-icon i');
+            const titleEl = detailView.querySelector('.detail-title-section h1');
+            const ratingEl = detailView.querySelector('.detail-rating-value');
+            const reviewCountEl = detailView.querySelector('.detail-rating-count');
+            const typeEl = detailView.querySelector('.info-value');
+            const descriptionEl = detailView.querySelector('.detail-description');
+
+            if (iconEl) iconEl.className = `ph ${product.icon}`;
+            if (titleEl) titleEl.textContent = product.name;
+            if (ratingEl) ratingEl.textContent = product.rating;
+            if (reviewCountEl) reviewCountEl.textContent = `(${product.reviewCount} reviews)`;
+            if (typeEl) typeEl.textContent = product.type;
+            if (descriptionEl) descriptionEl.textContent = product.description;
+
+            // Update product info section
+            const domainInfo = detailView.querySelector('.info-grid .info-item:nth-child(3) .info-value');
+            const subdomainInfo = detailView.querySelector('.info-grid .info-item:nth-child(4) .info-value');
+            if (domainInfo) domainInfo.textContent = product.domain;
+            if (subdomainInfo) subdomainInfo.textContent = product.subdomain;
+
+            // Update Add to Cart button
+            const addToCartBtn = detailView.querySelector('.add-to-cart-btn');
+            if (addToCartBtn) {
+                addToCartBtn.onclick = () => addToCart(productId);
+            }
+
+            // Update favorite button
+            const favoriteBtn = detailView.querySelector('.consumer-actions .favorite-btn');
+            if (favoriteBtn) {
+                favoriteBtn.onclick = (e) => toggleFavorite(productId, e);
+            }
+
+            // Show consumer detail view
+            document.getElementById('consumerProductDetail').style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function backToMarketplace() {
+            document.getElementById('consumerProductDetail').style.display = 'none';
+            document.getElementById('marketplaceView').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function toggleFavorite(productId, event) {
+            event.stopPropagation();
+            const btn = event.currentTarget;
+
+            let favorites = JSON.parse(localStorage.getItem('marketplaceFavorites') || '[]');
+
+            if (favorites.includes(productId)) {
+                favorites = favorites.filter(id => id !== productId);
+                btn.classList.remove('active');
+            } else {
+                favorites.push(productId);
+                btn.classList.add('active');
+            }
+
+            localStorage.setItem('marketplaceFavorites', JSON.stringify(favorites));
+        }
+
+        function toggleAvailableInDropdown(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const menu = event ? event.currentTarget.nextElementSibling : document.querySelector('.available-in-menu');
+            menu.classList.toggle('active');
+        }
+
+        function selectAvailableIn(tool, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const menu = event ? event.currentTarget.closest('.available-in-menu') : document.querySelector('.available-in-menu');
+            const btn = event ? menu.previousElementSibling : document.querySelector('.available-in-btn');
+            btn.childNodes[0].textContent = 'Available in ' + tool;
+
+            // Update selected state
+            const options = menu.querySelectorAll('.available-in-option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.target.closest('.available-in-option').classList.add('selected');
+
+            // Close dropdown
+            toggleAvailableInDropdown();
+        }
+
+        function addToCart(productId, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+
+            // Check if already in cart
+            if (cart.some(item => item.id === productId)) {
+                alert('This product is already in your cart');
+                return;
+            }
+
+            // Get product data
+            const productData = marketplaceProducts[productId] || marketplaceProducts['fraud-alerts'];
+
+            // Add product to cart
+            const product = {
+                id: productId,
+                name: productData.name,
+                category: productData.category,
+                owner: productData.owner,
+                justification: ''
+            };
+
+            cart.push(product);
+            localStorage.setItem('marketplaceCart', JSON.stringify(cart));
+            updateCartCount();
+
+            // Show confirmation
+            alert('Product added to cart!');
+        }
+
+        function showCart() {
+            // Hide other views
+            document.getElementById('marketplaceView').style.display = 'none';
+            document.getElementById('consumerProductDetail').style.display = 'none';
+            document.getElementById('checkoutView').style.display = 'none';
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'none';
+            document.getElementById('detailView').classList.remove('active');
+
+            // Show cart view
+            document.getElementById('cartView').style.display = 'block';
+
+            // Render cart items
+            renderCartItems();
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function hideCart() {
+            document.getElementById('cartView').style.display = 'none';
+
+            // Return to marketplace
+            if (document.getElementById('marketplaceTab').classList.contains('active')) {
+                document.getElementById('marketplaceView').style.display = 'block';
+            } else {
+                document.querySelector('.hero').style.display = 'block';
+                document.querySelector('.main-content').style.display = 'block';
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function renderCartItems() {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const emptyCart = document.querySelector('.empty-cart');
+            const cartSummary = document.querySelector('.cart-summary');
+            const itemCountElement = document.querySelector('.summary-value');
+
+            if (cart.length === 0) {
+                cartItemsContainer.style.display = 'none';
+                cartSummary.style.display = 'none';
+                emptyCart.style.display = 'block';
+            } else {
+                cartItemsContainer.style.display = 'block';
+                cartSummary.style.display = 'block';
+                emptyCart.style.display = 'none';
+
+                cartItemsContainer.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item-card">
+                        <div class="cart-item-header">
+                            <div class="cart-item-info">
+                                <h3>${item.name}</h3>
+                                <div class="cart-item-meta">
+                                    <span><i class="ph ph-folder"></i> ${item.category}</span>
+                                    <span><i class="ph ph-user"></i> ${item.owner}</span>
+                                </div>
+                            </div>
+                            <button class="remove-item-btn" onclick="removeFromCart('${item.id}')">
+                                <i class="ph ph-x"></i>
+                            </button>
+                        </div>
+                        <div class="business-justification">
+                            <label>Business Justification <span style="color: #DC2626;">*</span></label>
+                            <textarea
+                                placeholder="Explain why you need access to this data product..."
+                                onchange="updateJustification('${item.id}', this.value)"
+                            >${item.justification || ''}</textarea>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Update summary
+                if (itemCountElement) {
+                    itemCountElement.textContent = cart.length;
+                }
+            }
+        }
+
+        function updateJustification(productId, justification) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.justification = justification;
+                localStorage.setItem('marketplaceCart', JSON.stringify(cart));
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('marketplaceCart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function showCheckout() {
+            // Validate that all items have justifications
+            const missingJustification = cart.some(item => !item.justification || item.justification.trim() === '');
+
+            if (missingJustification) {
+                alert('Please provide business justification for all items in your cart before proceeding to checkout.');
+                return;
+            }
+
+            // Hide cart view
+            document.getElementById('cartView').style.display = 'none';
+
+            // Show checkout view
+            document.getElementById('checkoutView').style.display = 'block';
+
+            // Render order items
+            renderOrderItems();
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function renderOrderItems() {
+            const orderItemsContainer = document.querySelector('.checkout-section .order-items');
+            const itemCountElement = document.querySelector('#checkoutView .summary-value');
+
+            if (orderItemsContainer) {
+                orderItemsContainer.innerHTML = cart.map(item => `
+                    <div class="order-item">
+                        <div class="order-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="order-item-meta">${item.category} • ${item.owner}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update summary
+            if (itemCountElement) {
+                itemCountElement.textContent = cart.length;
+            }
+        }
+
+        function selectDeliveryOption(option) {
+            // Update selected state
+            document.querySelectorAll('.delivery-option').forEach(opt => {
+                opt.classList.remove('selected');
+                const radio = opt.querySelector('input[type="radio"]');
+                if (radio) radio.checked = false;
+            });
+
+            event.currentTarget.classList.add('selected');
+            const radio = event.currentTarget.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        function submitOrder() {
+            // Get selected delivery option
+            const selectedOption = document.querySelector('.delivery-option.selected');
+
+            if (!selectedOption) {
+                alert('Please select a delivery destination before submitting your order.');
+                return;
+            }
+
+            // In a real app, this would submit to a backend
+            alert('Order submitted successfully! You will receive confirmation shortly.');
+
+            // Clear cart
+            cart = [];
+            localStorage.setItem('marketplaceCart', JSON.stringify(cart));
+            updateCartCount();
+
+            // Return to marketplace
+            document.getElementById('checkoutView').style.display = 'none';
+            showMarketplace();
+        }
+
+        // Initialize cart count on page load
+        updateCartCount();
+
+        // Close available-in dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.available-in-dropdown');
+            const menu = document.querySelector('.available-in-menu');
+
+            if (dropdown && menu && !dropdown.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+
+            // Close marketplace filter panels when clicking outside
+            if (!event.target.closest('#marketplaceView .filter-container')) {
+                document.querySelectorAll('#marketplaceView .filter-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                document.querySelectorAll('#marketplaceView .filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+
+        // ========== MARKETPLACE FILTER FUNCTIONS ==========
+
+        let marketplaceActiveFilters = {
+            'marketplace-department': [],
+            'marketplace-category': []
+        };
+
+        // Toggle marketplace filter panels
+        function toggleMarketplaceFilterPanel(evt, panelId) {
+            evt.stopPropagation();
+
+            const panel = document.getElementById(panelId);
+            const btn = evt.currentTarget;
+            const allPanels = document.querySelectorAll('#marketplaceView .filter-panel');
+            const allBtns = document.querySelectorAll('#marketplaceView .filter-btn');
+
+            // Close other panels
+            allPanels.forEach(p => {
+                if (p.id !== panelId) {
+                    p.classList.remove('active');
+                }
+            });
+
+            allBtns.forEach(b => {
+                if (b !== btn) {
+                    b.classList.remove('active');
+                }
+            });
+
+            // Toggle current panel
+            panel.classList.toggle('active');
+            btn.classList.toggle('active');
+        }
+
+        // Update marketplace active filters display
+        function updateMarketplaceActiveFilters() {
+            const container = document.getElementById('marketplaceActiveFiltersContainer');
+            const filtersDiv = document.getElementById('marketplaceActiveFilters');
+
+            const allFilters = [
+                ...marketplaceActiveFilters['marketplace-department'].map(f => ({...f, displayLabel: 'Department'})),
+                ...marketplaceActiveFilters['marketplace-category'].map(f => ({...f, displayLabel: 'Category'}))
+            ];
+
+            if (allFilters.length === 0) {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
+
+                const filterTags = allFilters.map(filter => {
+                    return `
+                        <div class="filter-tag">
+                            <span>${filter.displayLabel}: ${filter.label}</span>
+                            <span class="filter-tag-remove" onclick="removeMarketplaceFilter('${filter.type}', '${filter.value}')">
+                                <i class="ph ph-x"></i>
+                            </span>
+                        </div>
+                    `;
+                }).join('');
+
+                const clearAllBtn = `
+                    <button class="clear-all-inline-btn" onclick="clearAllMarketplaceFilters()">
+                        <i class="ph ph-x-circle"></i>
+                        <span>Clear All</span>
+                    </button>
+                `;
+
+                filtersDiv.innerHTML = filterTags + clearAllBtn;
+            }
+        }
+
+        // Remove single marketplace filter
+        function removeMarketplaceFilter(filterType, filterValue) {
+            marketplaceActiveFilters[filterType] = marketplaceActiveFilters[filterType].filter(f => f.value !== filterValue);
+
+            // Uncheck the checkbox
+            const checkbox = document.querySelector(`input[data-filter="${filterType}"][value="${filterValue}"]`);
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+
+            updateMarketplaceActiveFilters();
+        }
+
+        // Clear all marketplace filters
+        function clearAllMarketplaceFilters() {
+            // Clear all filter arrays
+            Object.keys(marketplaceActiveFilters).forEach(key => {
+                marketplaceActiveFilters[key] = [];
+            });
+
+            // Uncheck all checkboxes
+            document.querySelectorAll('#marketplaceView input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            updateMarketplaceActiveFilters();
+        }
+
+        // Marketplace checkbox change handler
+        function handleMarketplaceFilterChange(checkbox) {
+            const filterType = checkbox.getAttribute('data-filter');
+            const filterValue = checkbox.value;
+            const filterLabel = checkbox.nextElementSibling.textContent;
+
+            if (checkbox.checked) {
+                // Add filter
+                if (!marketplaceActiveFilters[filterType].some(f => f.value === filterValue)) {
+                    marketplaceActiveFilters[filterType].push({
+                        type: filterType,
+                        value: filterValue,
+                        label: filterLabel
+                    });
+                }
+            } else {
+                // Remove filter
+                marketplaceActiveFilters[filterType] = marketplaceActiveFilters[filterType].filter(f => f.value !== filterValue);
+            }
+
+            updateMarketplaceActiveFilters();
+        }
+
+        // Marketplace department search
+        function searchMarketplaceDepartments() {
+            const searchInput = document.getElementById('marketplaceDepartmentSearch');
+            const filterOptions = document.querySelectorAll('#marketplaceDepartmentOptions .filter-option');
+
+            const searchTerm = searchInput.value.toLowerCase();
+
+            filterOptions.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle recommendations section
+        function toggleRecommendations(event) {
+            event.preventDefault();
+
+            const grid = document.getElementById('recommendationsGrid');
+            const link = document.getElementById('seeMoreRecommendations');
+
+            if (grid.classList.contains('expanded')) {
+                grid.classList.remove('expanded');
+                link.textContent = 'See more';
+            } else {
+                grid.classList.add('expanded');
+                link.textContent = 'Show less';
+            }
+        }
+
+        // Share product function
+        function shareProduct(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            // In a real app, this would open a share dialog
+            alert('Share functionality: Copy link to clipboard or share via email/Slack');
+        }
     </script>
 </body>
 </html>
