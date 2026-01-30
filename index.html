@@ -2644,6 +2644,273 @@
             background: #001557;
         }
 
+        /* Share Modal */
+        .share-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-modal-overlay.active {
+            display: flex;
+        }
+
+        .share-modal {
+            background: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 32px;
+        }
+
+        .share-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .share-modal-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .share-modal-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .share-modal-input:focus {
+            outline: none;
+            border-color: #2563EB;
+        }
+
+        .share-permission-select {
+            padding: 12px 16px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+            background: white;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        .share-invite-btn {
+            padding: 12px 24px;
+            background: #1F2937;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .share-invite-btn:hover {
+            background: #111827;
+        }
+
+        .share-section {
+            margin-bottom: 24px;
+        }
+
+        .share-section-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6B7280;
+            margin-bottom: 12px;
+        }
+
+        .share-access-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .share-access-option:hover {
+            background: #F9FAFB;
+        }
+
+        .share-access-icon {
+            width: 40px;
+            height: 40px;
+            background: #F3F4F6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .share-access-icon i {
+            font-size: 20px;
+            color: #6B7280;
+        }
+
+        .share-access-info {
+            flex: 1;
+        }
+
+        .share-access-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .share-access-subtitle {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .share-person {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .share-person:last-child {
+            border-bottom: none;
+        }
+
+        .share-person-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .share-person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .share-person-info {
+            flex: 1;
+        }
+
+        .share-person-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .share-person-email {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .share-person-permission {
+            padding: 6px 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #374151;
+            background: white;
+            cursor: pointer;
+            min-width: 100px;
+        }
+
+        .share-person-owner {
+            padding: 6px 12px;
+            background: #F3F4F6;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #6B7280;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .share-person-owner i {
+            color: #10B981;
+            font-size: 16px;
+        }
+
+        .share-person-remove {
+            width: 32px;
+            height: 32px;
+            background: #FEE2E2;
+            border: none;
+            border-radius: 6px;
+            color: #DC2626;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-person-remove:hover {
+            background: #FECACA;
+        }
+
+        .share-link-section {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            padding: 12px;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+
+        .share-link-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            font-size: 14px;
+            color: #6B7280;
+            outline: none;
+        }
+
+        .share-copy-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #374151;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .share-copy-btn:hover {
+            background: #F9FAFB;
+        }
+
+        .share-copy-btn i {
+            font-size: 16px;
+        }
+
         /* Cart View */
         .cart-view {
             display: none;
@@ -4393,7 +4660,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="shareProduct()" style="background: white; border: 1px solid #D1D5DB; color: #374151;">
+                    <button class="add-to-cart-btn" onclick="openShareModal()" style="background: white; border: 1px solid #D1D5DB; color: #374151;">
                         <i class="ph ph-share-network"></i>
                         Share
                     </button>
@@ -4826,7 +5093,7 @@
 
                 <div class="detail-center">
                     <!-- Access Information -->
-                    <div class="access-info">
+                    <div class="access-info" onclick="openShareModal()" style="cursor: pointer;" title="Click to manage access">
                         <span class="access-label">Active Users with Access</span>
                         <div class="access-avatars">
                             <div class="avatar-stack">
@@ -4852,7 +5119,7 @@
                             <i class="ph ph-copy"></i>
                             Clone
                         </button>
-                        <button class="action-btn primary">
+                        <button class="action-btn primary" onclick="openShareModal()">
                             <i class="ph ph-share-network"></i>
                             Share
                         </button>
@@ -7218,9 +7485,146 @@
             if (event) {
                 event.stopPropagation();
             }
-            // In a real app, this would open a share dialog
-            alert('Share functionality: Copy link to clipboard or share via email/Slack');
+            openShareModal();
+        }
+
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeShareModal(event) {
+            if (!event || event.target.id === 'shareModal') {
+                document.getElementById('shareModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('shareModal');
+                if (modal && modal.classList.contains('active')) {
+                    closeShareModal();
+                }
+            }
+        });
+
+        function copyShareLink() {
+            const linkInput = document.getElementById('shareLinkInput');
+            linkInput.select();
+            document.execCommand('copy');
+
+            const btn = event.target.closest('.share-copy-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-check"></i> Copied!';
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
+
+        function inviteUser() {
+            const emailInput = document.getElementById('shareEmailInput');
+            const email = emailInput.value.trim();
+
+            if (email) {
+                alert(`Invitation sent to ${email}`);
+                emailInput.value = '';
+            } else {
+                alert('Please enter an email address');
+            }
         }
     </script>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="share-modal-overlay" onclick="closeShareModal(event)">
+        <div class="share-modal" onclick="event.stopPropagation()">
+            <div class="share-modal-header">
+                <input type="text" class="share-modal-input" placeholder="Email, name..." id="shareEmailInput">
+                <select class="share-permission-select">
+                    <option value="view">can view</option>
+                    <option value="edit">can edit</option>
+                </select>
+                <button class="share-invite-btn" onclick="inviteUser()">Invite</button>
+            </div>
+
+            <div class="share-section">
+                <div class="share-section-title">General access</div>
+                <div class="share-access-option">
+                    <div class="share-access-icon">
+                        <i class="ph ph-users-three"></i>
+                    </div>
+                    <div class="share-access-info">
+                        <div class="share-access-title">Only those invited</div>
+                        <div class="share-access-subtitle">4 people</div>
+                    </div>
+                </div>
+                <div class="share-access-option">
+                    <div class="share-access-icon">
+                        <i class="ph ph-link"></i>
+                    </div>
+                    <div class="share-access-info">
+                        <div class="share-access-title">Link access</div>
+                        <div class="share-access-subtitle">Only users have shared the link</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <div class="share-section-title">People with access</div>
+
+                <div class="share-person">
+                    <div class="share-person-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    </div>
+                    <div class="share-person-info">
+                        <div class="share-person-name">Sam Dy</div>
+                        <div class="share-person-email">sam@ui8.net</div>
+                    </div>
+                    <select class="share-person-permission">
+                        <option value="view">can view</option>
+                        <option value="edit" selected>can edit</option>
+                    </select>
+                </div>
+
+                <div class="share-person">
+                    <div class="share-person-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    </div>
+                    <div class="share-person-info">
+                        <div class="share-person-name">Ellie Joy</div>
+                        <div class="share-person-email">ellie@ui8.net</div>
+                    </div>
+                    <select class="share-person-permission">
+                        <option value="view">can view</option>
+                        <option value="edit" selected>can edit</option>
+                    </select>
+                    <button class="share-person-remove" title="Remove access">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <div class="share-person">
+                    <div class="share-person-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    </div>
+                    <div class="share-person-info">
+                        <div class="share-person-name">Hellen</div>
+                        <div class="share-person-email">helen@ui8.net</div>
+                    </div>
+                    <div class="share-person-owner">
+                        owner
+                        <i class="ph-fill ph-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="share-link-section">
+                <input type="text" class="share-link-input" value="https://datamarketplace.usbank.com/product/fraud-alerts" readonly id="shareLinkInput">
+                <button class="share-copy-btn" onclick="copyShareLink()">
+                    <i class="ph ph-link"></i>
+                    Copy link
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
